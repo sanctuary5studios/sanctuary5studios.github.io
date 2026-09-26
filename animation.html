@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Snuggle Sanctuary: The Animated Series — Sanctuary Five Studios</title>
+<meta name="description" content="An early look at the Snuggle Sanctuary animated series — a story-driven expansion of the game's world, coming from Sanctuary Five Studios.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EAF6FF; --sky1:#D9F0FF; --sky2:#F4FBEF; --paper:#FFFFFF; --ink:#3B3F5C; --soft:#7C8199; --line:#DCE8F3;
+    --mint:#C4F2DA; --peach:#FFDCC4; --blush:#FFB3B8; --butter:#FFF2A6; --sky:#B5DEFF; --lav:#DCD0FA;
+    --gold:#EE9F00; --heart:#FF6F91; --gem:#8E7BEF;
+    --go:#66D19C; --goEdge:#3DB07A; --goInk:#123D2A;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg) linear-gradient(180deg,var(--sky1) 0%,var(--sky2) 60%,var(--bg) 100%);
+    color:var(--ink);
+    font-family:"Fredoka","Baloo 2","Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+    line-height:1.5;
+  }
+  a{color:inherit}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+  header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.72);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;max-width:1000px;margin:0 auto}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;text-decoration:none;color:var(--ink)}
+  .brand .mark{width:34px;height:34px;border-radius:12px;background:linear-gradient(160deg,var(--mint),var(--sky));display:grid;place-items:center;box-shadow:0 3px 0 var(--goEdge)}
+  .navlinks{display:flex;gap:22px;font-weight:600;font-size:15px}
+  .navlinks a{text-decoration:none;color:var(--soft)}
+  .navlinks a:hover{color:var(--ink)}
+  .navlinks a.on{color:var(--ink)}
+  @media(max-width:620px){.navlinks{display:none}}
+  .hero{padding:60px 0 36px;text-align:center}
+  .hero .tag{display:inline-block;background:var(--paper);border-radius:999px;padding:6px 16px;font-weight:600;font-size:13.5px;color:var(--soft);box-shadow:0 3px 0 var(--line);margin-bottom:18px}
+  .hero h1{font-size:clamp(30px,5.5vw,48px);margin:0 0 14px;font-weight:700;letter-spacing:-.5px}
+  .hero h1 span{color:var(--gem);-webkit-text-stroke:1px #6E5BC4}
+  .hero p{max-width:600px;margin:0 auto;color:var(--soft);font-size:17px}
+  section{padding:44px 0}
+  .zonehead{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+  .zonehead h2{margin:0;font-size:24px;font-weight:700}
+  .zonehead i{flex:1;height:3px;border-radius:3px;background:var(--line)}
+  .pitch{background:var(--paper);border-radius:32px;padding:36px;box-shadow:0 6px 0 var(--line)}
+  @media(max-width:560px){.pitch{padding:24px}}
+  .pitch p{color:var(--ink);font-size:16px;margin:0 0 14px}
+  .pitch p:last-child{margin-bottom:0}
+  .pitch .logline{font-family:"Caveat",cursive;font-size:26px;color:var(--gem);line-height:1.3;margin:0 0 18px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:760px){.grid3{grid-template-columns:1fr}}
+  .fcard{background:var(--paper);border-radius:24px;padding:22px;box-shadow:0 4px 0 var(--line)}
+  .fcard .ic{width:46px;height:46px;border-radius:16px;display:grid;place-items:center;font-size:22px;margin-bottom:12px}
+  .fcard:nth-child(1) .ic{background:var(--lav)}
+  .fcard:nth-child(2) .ic{background:var(--mint)}
+  .fcard:nth-child(3) .ic{background:var(--peach)}
+  .fcard h4{margin:0 0 6px;font-size:16px}
+  .fcard p{margin:0;color:var(--soft);font-size:13.5px;line-height:1.45}
+  .themewrap{display:flex;flex-direction:column;gap:14px}
+  .theme{display:flex;gap:16px;align-items:flex-start;background:var(--paper);border-radius:24px;padding:18px 20px;box-shadow:0 4px 0 var(--line)}
+  .theme .num{font-family:"Caveat",cursive;font-size:34px;color:var(--gem);line-height:1;flex:none;width:34px}
+  .theme h4{margin:0 0 4px;font-size:16px}
+  .theme p{margin:0;color:var(--soft);font-size:14px;line-height:1.5}
+  .castgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  @media(max-width:760px){.castgrid{grid-template-columns:repeat(2,1fr)}}
+  .cast{background:var(--paper);border-radius:22px;padding:16px 14px;box-shadow:0 4px 0 var(--line);text-align:center}
+  .cast .av{width:64px;height:64px;border-radius:20px;margin:0 auto 10px;display:grid;place-items:center;font-size:30px}
+  .cast:nth-child(1) .av{background:var(--mint)}
+  .cast:nth-child(2) .av{background:var(--peach)}
+  .cast:nth-child(3) .av{background:var(--lav)}
+  .cast:nth-child(4) .av{background:var(--blush)}
+  .cast h5{margin:0 0 4px;font-size:14.5px}
+  .cast p{margin:0;color:var(--soft);font-size:12.5px;line-height:1.4}
+  .eplist{display:flex;flex-direction:column;gap:10px}
+  .ep{display:flex;gap:14px;align-items:flex-start;background:var(--paper);border-radius:20px;padding:14px 18px;box-shadow:0 3px 0 var(--line)}
+  .ep .tag2{flex:none;background:var(--bg);color:var(--soft);font-weight:700;font-size:12px;border-radius:999px;padding:4px 10px;margin-top:2px}
+  .ep h5{margin:0 0 4px;font-size:15px}
+  .ep p{margin:0;color:var(--soft);font-size:13.5px;line-height:1.45}
+  .status-card{background:linear-gradient(160deg,var(--lav),var(--sky));border-radius:32px;padding:40px;text-align:center}
+  .status-card h2{margin:0 0 10px;font-size:24px;color:#3D2F6B}
+  .status-card p{margin:0 auto;max-width:520px;color:#4A3F6B;opacity:.9}
+  .status-pill{display:inline-block;background:rgba(255,255,255,.7);border-radius:999px;padding:6px 16px;font-weight:700;font-size:13px;color:#4A3F6B;margin-bottom:16px}
+  footer{padding:34px 0 50px;text-align:center;color:var(--soft);font-size:13.5px}
+  footer a{text-decoration:underline;color:var(--soft)}
+  .footlinks{display:flex;gap:18px;justify-content:center;margin-bottom:14px;flex-wrap:wrap;font-weight:600}
+  .footlinks a{text-decoration:none;color:var(--ink)}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a class="brand" href="/">
+      <span class="mark">🌿</span>
+      Sanctuary Five Studios
+    </a>
+    <nav class="navlinks">
+      <a href="/#game">Snuggle Sanctuary</a>
+      <a href="/animation.html" class="on">Animated Series</a>
+      <a href="/#studio">Studio</a>
+    </nav>
+  </div>
+</header>
+<div class="wrap">
+  <section class="hero">
+    <span class="tag">🎬 Early development</span>
+    <h1>A story worth <span>watching,</span> not just playing.</h1>
+    <p>Snuggle Sanctuary began as a game about caring for small creatures. We think its heart — the letting go, the love, the quiet moments — deserves a screen of its own.</p>
+  </section>
+  <section>
+    <div class="pitch">
+      <p class="logline">"Every family in the sanctuary has a story. This is theirs."</p>
+      <p>The Snuggle Sanctuary animated series expands the game's world into a story-driven show for anyone who loved the game's tone: gentle, sincere, and unafraid of a quiet, emotional moment. It follows the sanctuary's ranger and the animal families in their care, each episode carrying its own small story of arrival, belonging, and — eventually — moving on.</p>
+      <p>Where the game is about the feeling of nurturing something, the series is about the feeling of loving something enough to let it go. Same world, same warmth, a different way in.</p>
+    </div>
+  </section>
+  <section>
+    <div class="zonehead"><h2>What kind of show this could be</h2><i></i></div>
+    <div class="grid3">
+      <div class="fcard">
+        <div class="ic">📺</div>
+        <h4>Short-form episodes</h4>
+        <p>8–12 minute episodes, each centred on one family or one small turning point — easy to binge, easy to sit with one at a time.</p>
+      </div>
+      <div class="fcard">
+        <div class="ic">🎨</div>
+        <h4>The mochi look, in motion</h4>
+        <p>Carries the game's soft, dimensional "mochi" art style into 2D/2.5D animation — same silhouettes and colour language players already know.</p>
+      </div>
+      <div class="fcard">
+        <div class="ic">💌</div>
+        <h4>Anthology with a through-line</h4>
+        <p>Mostly standalone animal stories, but the ranger's own arc — and the sanctuary's history — quietly threads through every episode.</p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="zonehead"><h2>Themes to build episodes around</h2><i></i></div>
+    <div class="themewrap">
+      <div class="theme">
+        <div class="num">1</div>
+        <div><h4>Love with open hands</h4><p>The game's core theme, expanded: caring for someone fully, knowing the caring was never about keeping them. An episode could follow a single family from arrival to the day they're ready to go.</p></div>
+      </div>
+      <div class="theme">
+        <div class="num">2</div>
+        <div><h4>What we inherit</h4><p>The sanctuary itself carries a legacy — someone built this place out of love before the ranger arrived. Flashback or "journal" episodes could explore who came before, and why they made the choices they did.</p></div>
+      </div>
+      <div class="theme">
+        <div class="num">3</div>
+        <div><h4>Small kindnesses, seen up close</h4><p>Episodes that slow down and sit inside one ordinary act of care — a night watch during a storm, a scared new arrival's first hour — treated with weight instead of played for cuteness alone.</p></div>
+      </div>
+      <div class="theme">
+        <div class="num">4</div>
+        <div><h4>Belonging without belonging to</h4><p>A recurring question for the animal families: what does it mean to belong somewhere temporarily? Stories that let animals (and the ranger) wrestle with attachment honestly, without a forced tidy bow.</p></div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="zonehead"><h2>Starting cast ideas</h2><i></i></div>
+    <div class="castgrid">
+      <div class="cast">
+        <div class="av">🧑‍🌾</div>
+        <h5>The Ranger</h5>
+        <p>Same customizable protagonist as the game — quiet, steady, still learning what the sanctuary is asking of them.</p>
+      </div>
+      <div class="cast">
+        <div class="av">🐰</div>
+        <h5>The founding family</h5>
+        <p>The very first animals in the sanctuary — an anchor presence across episodes, almost like elders of the place.</p>
+      </div>
+      <div class="cast">
+        <div class="av">📖</div>
+        <h5>The journal voice</h5>
+        <p>Whoever kept the sanctuary before the ranger — heard through old journal pages, narrating the "why" behind the place's traditions.</p>
+      </div>
+      <div class="cast">
+        <div class="av">🦊</div>
+        <h5>The wanderer</h5>
+        <p>A recurring animal who never quite settles — a gentle, ongoing thread about restlessness and finding (or not finding) a place to stay.</p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="zonehead"><h2>Episode seeds</h2><i></i></div>
+    <div class="eplist">
+      <div class="ep"><span class="tag2">EP IDEA</span><div><h5>"The First Night"</h5><p>A frightened new arrival won't settle. The ranger stays up with them until dawn — a quiet, near-wordless episode about presence over problem-solving.</p></div></div>
+      <div class="ep"><span class="tag2">EP IDEA</span><div><h5>"Nana's Pages"</h5><p>The ranger finds an old journal entry describing a resident from years ago — and realises today's newest arrival is that animal's grandchild, come home.</p></div></div>
+      <div class="ep"><span class="tag2">EP IDEA</span><div><h5>"The Storm"</h5><p>A severe storm threatens the sanctuary; every family has a different way of coping with fear, and the ranger learns each one takes a different kind of comfort.</p></div></div>
+      <div class="ep"><span class="tag2">EP IDEA</span><div><h5>"Ready"</h5><p>A full-circle episode: the founding family's youngest is finally ready to be rehomed. A gentle, tears-allowed send-off episode built entirely around goodbye.</p></div></div>
+    </div>
+  </section>
+  <section>
+    <div class="status-card">
+      <span class="status-pill">🌱 Concept stage</span>
+      <h2>This page will grow with the idea</h2>
+      <p>The animated series is still just a spark right now — these are early creative directions, not confirmed plans. As the concept, style, and story take shape, this page will be updated with real art, character designs, and (eventually) something to actually watch.</p>
+    </div>
+  </section>
+</div>
+<footer>
+  <div class="footlinks">
+    <a href="/#game">Snuggle Sanctuary</a>
+    <a href="/animation.html">Animated Series</a>
+    <a href="/#studio">About</a>
+    <a href="/privacy.html">Privacy Policy</a>
+    <a href="mailto:sanctuary5studios@gmail.com">Contact</a>
+  </div>
+  <div class="wrap">© 2026 Sanctuary Five Studios. All rights reserved.</div>
+</footer>
+</body>
+</html>
