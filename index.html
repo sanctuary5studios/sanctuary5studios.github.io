@@ -33,7 +33,7 @@
   .navlinks{display:flex;gap:22px;font-weight:600;font-size:15px}
   .navlinks a{text-decoration:none;color:var(--soft)}
   .navlinks a:hover{color:var(--ink)}
-  @media(max-width:560px){.navlinks{display:none}}
+  @media(max-width:620px){.navlinks{display:none}}
   .hero{padding:64px 0 40px;text-align:center;position:relative;overflow:hidden}
   .hero .tag{display:inline-block;background:var(--paper);border-radius:999px;padding:6px 16px;font-weight:600;font-size:13.5px;color:var(--soft);box-shadow:0 3px 0 var(--line);margin-bottom:18px}
   .hero h1{font-size:clamp(32px,6vw,52px);margin:0 0 14px;font-weight:700;letter-spacing:-.5px}
@@ -91,6 +91,9 @@
   footer a{text-decoration:underline;color:var(--soft)}
   .footlinks{display:flex;gap:18px;justify-content:center;margin-bottom:14px;flex-wrap:wrap;font-weight:600}
   .footlinks a{text-decoration:none;color:var(--ink)}
+  .seriescard{background:linear-gradient(160deg,var(--lav),var(--sky));border-radius:32px;padding:36px;text-align:center;margin-top:14px}
+  .seriescard h3{margin:0 0 8px;font-size:22px;color:#3D2F6B}
+  .seriescard p{margin:0 auto 18px;max-width:520px;color:#4A3F6B;opacity:.9}
 </style>
 </head>
 <body>
@@ -102,6 +105,7 @@
     </a>
     <nav class="navlinks">
       <a href="#game">Snuggle Sanctuary</a>
+      <a href="/animation.html">Animated Series</a>
       <a href="#studio">Studio</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -174,6 +178,11 @@
         <div class="pillar"><div class="num">🧡</div><b>Player-first</b><span>No pressure, no pay-to-win</span></div>
         <div class="pillar"><div class="num">🐣</div><b>Growing</b><span>More Sanctuary stories ahead</span></div>
       </div>
+      <div class="seriescard">
+        <h3>🎬 An animated series is in early development</h3>
+        <p>We're exploring a story-driven animated series set in the Snuggle Sanctuary world — same heart, same warmth, told a different way.</p>
+        <a class="btn ghost" href="/animation.html">See the early concept</a>
+      </div>
     </div>
   </section>
   <section id="contact">
@@ -187,6 +196,7 @@
 <footer>
   <div class="footlinks">
     <a href="#game">Snuggle Sanctuary</a>
+    <a href="/animation.html">Animated Series</a>
     <a href="#studio">About</a>
     <a href="/privacy.html">Privacy Policy</a>
     <a href="mailto:sanctuary5studios@gmail.com">Contact</a>
