@@ -8,12 +8,33 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<script>
+(function(){
+  try{
+    var saved = localStorage.getItem('s5-theme');
+    var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  }catch(e){}
+})();
+</script>
 <style>
   :root{
     --bg:#EAF6FF; --sky1:#D9F0FF; --sky2:#F4FBEF; --paper:#FFFFFF; --ink:#3B3F5C; --soft:#7C8199; --line:#DCE8F3;
     --mint:#C4F2DA; --peach:#FFDCC4; --blush:#FFB3B8; --butter:#FFF2A6; --sky:#B5DEFF; --lav:#DCD0FA;
     --gold:#EE9F00; --heart:#FF6F91; --gem:#8E7BEF;
     --go:#66D19C; --goEdge:#3DB07A; --goInk:#123D2A;
+    --headerBg:rgba(255,255,255,.72);
+    --lavInk:#3D2F6B; --lavInkSoft:#4A3F6B;
+    color-scheme:light;
+  }
+  :root[data-theme="dark"]{
+    --bg:#1B2036; --sky1:#171B30; --sky2:#20264A; --paper:#242A4A; --ink:#EDEFFC; --soft:#A6ACD6; --line:#343B66;
+    --mint:#2E5C4C; --peach:#5C4433; --blush:#5C333F; --butter:#5C5330; --sky:#2C3E66; --lav:#3B3466;
+    --gold:#FFC94A; --heart:#FF8FA8; --gem:#B4A4FF;
+    --go:#4FBF8F; --goEdge:#2E8F67; --goInk:#EAFFF4;
+    --headerBg:rgba(27,32,54,.72);
+    --lavInk:#E8E3FF; --lavInkSoft:#CFC6F5;
+    color-scheme:dark;
   }
   *,*::before,*::after{box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -23,10 +44,13 @@
     color:var(--ink);
     font-family:"Fredoka","Baloo 2","Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
     line-height:1.5;
+    transition:background-color .2s ease, color .2s ease;
   }
   a{color:inherit}
+  .theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:12px;background:var(--paper);box-shadow:0 3px 0 var(--line);border:none;cursor:pointer;font-size:17px;line-height:1;flex:none;margin-left:6px}
+  .theme-toggle:active{transform:translateY(2px)}
   .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
-  header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.72);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  header{position:sticky;top:0;z-index:10;background:var(--headerBg);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
   .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;max-width:1000px;margin:0 auto}
   .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;text-decoration:none}
   .brand .mark{width:34px;height:34px;border-radius:12px;background:linear-gradient(160deg,var(--mint),var(--sky));display:grid;place-items:center;box-shadow:0 3px 0 var(--goEdge)}
@@ -92,8 +116,8 @@
   .footlinks{display:flex;gap:18px;justify-content:center;margin-bottom:14px;flex-wrap:wrap;font-weight:600}
   .footlinks a{text-decoration:none;color:var(--ink)}
   .seriescard{background:linear-gradient(160deg,var(--lav),var(--sky));border-radius:32px;padding:36px;text-align:center;margin-top:14px}
-  .seriescard h3{margin:0 0 8px;font-size:22px;color:#3D2F6B}
-  .seriescard p{margin:0 auto 18px;max-width:520px;color:#4A3F6B;opacity:.9}
+  .seriescard h3{margin:0 0 8px;font-size:22px;color:var(--lavInk)}
+  .seriescard p{margin:0 auto 18px;max-width:520px;color:var(--lavInkSoft);opacity:.9}
 </style>
 </head>
 <body>
@@ -109,6 +133,7 @@
       <a href="#studio">Studio</a>
       <a href="#contact">Contact</a>
     </nav>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
   </div>
 </header>
 <div id="top" class="wrap">
@@ -203,5 +228,27 @@
   </div>
   <div class="wrap">© 2026 Sanctuary Five Studios. All rights reserved.</div>
 </footer>
+<script>
+(function(){
+  var btn = document.getElementById('themeToggle');
+  if (!btn) return;
+  function setIcon(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    btn.textContent = isDark ? '☀️' : '🌙';
+  }
+  setIcon();
+  btn.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if (isDark){
+      document.documentElement.removeAttribute('data-theme');
+      try{ localStorage.setItem('s5-theme', 'light'); }catch(e){}
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      try{ localStorage.setItem('s5-theme', 'dark'); }catch(e){}
+    }
+    setIcon();
+  });
+})();
+</script>
 </body>
 </html>
