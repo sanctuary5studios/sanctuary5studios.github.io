@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Become a Tester — Sanctuary Five Studios</title>
+<meta name="description" content="Join closed testing for Snuggle Sanctuary — a cosy kawaii animal idle game from Sanctuary Five Studios, coming to Google Play.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EAF6FF; --sky1:#D9F0FF; --sky2:#F4FBEF; --paper:#FFFFFF; --ink:#3B3F5C; --soft:#7C8199; --line:#DCE8F3;
+    --mint:#C4F2DA; --peach:#FFDCC4; --blush:#FFB3B8; --butter:#FFF2A6; --sky:#B5DEFF; --lav:#DCD0FA;
+    --gold:#EE9F00; --heart:#FF6F91; --gem:#8E7BEF;
+    --go:#66D19C; --goEdge:#3DB07A; --goInk:#123D2A;
+    --off:#EDF2F8; --offInk:#8791A8;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg) linear-gradient(180deg,var(--sky1) 0%,var(--sky2) 60%,var(--bg) 100%);
+    color:var(--ink);
+    font-family:"Fredoka","Baloo 2","Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+    line-height:1.5;
+  }
+  a{color:inherit}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.72);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;max-width:1000px;margin:0 auto}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;text-decoration:none}
+  .brand .mark{width:34px;height:34px;border-radius:12px;background:linear-gradient(160deg,var(--mint),var(--sky));display:grid;place-items:center;box-shadow:0 3px 0 var(--goEdge)}
+  .navlinks{display:flex;gap:22px;font-weight:600;font-size:15px}
+  .navlinks a{text-decoration:none;color:var(--soft)}
+  .navlinks a:hover{color:var(--ink)}
+  .navlinks a.on{color:var(--ink)}
+  @media(max-width:620px){.navlinks{display:none}}
+
+  main{padding:44px 0 20px}
+
+  .hero{background:var(--paper);border-radius:28px;padding:34px 28px;box-shadow:0 5px 0 var(--line);text-align:center;margin-bottom:26px}
+  .hero .tag{display:inline-flex;align-items:center;gap:6px;background:var(--butter);color:#6B5310;border-radius:999px;padding:5px 15px;font-weight:600;font-size:13.5px;margin-bottom:14px}
+  .hero h1{margin:0 0 10px;font-size:clamp(28px,6vw,38px);font-weight:700;color:var(--heart)}
+  .hero p{margin:0 auto;color:var(--soft);font-size:16px;line-height:1.5;max-width:48ch}
+  .hero .signoff{margin-top:16px;font-family:"Caveat",cursive;font-size:21px;color:var(--soft)}
+
+  .cta-box{background:linear-gradient(160deg,var(--mint),var(--sky));border-radius:28px;padding:28px;text-align:center;margin-bottom:30px}
+  .cta-box h2{margin:0 0 8px;font-size:21px;color:var(--goInk)}
+  .cta-box p{margin:0 0 18px;color:var(--goInk);opacity:.85;max-width:44ch;margin-inline:auto}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:16px;font-weight:700;font-size:15.5px;text-decoration:none;transition:transform .12s;background:var(--paper);color:var(--ink);box-shadow:0 4px 0 var(--line)}
+  .btn:active{transform:translateY(2px)}
+
+  .banner{display:flex;align-items:center;gap:14px;background:var(--paper);border-radius:22px;padding:14px 18px;box-shadow:0 4px 0 var(--line);margin-bottom:26px}
+  .banner .num{font-size:28px;font-weight:700;color:var(--heart);line-height:1;flex:0 0 auto;text-align:center}
+  .banner .num small{display:block;font-size:12px;font-weight:600;color:var(--soft)}
+  .banner .lab{font-size:13.5px;color:var(--soft);line-height:1.4}
+
+  .zonehead{margin:30px 4px 14px;display:flex;align-items:center;gap:10px}
+  .zonehead h2{margin:0;font-size:21px;font-weight:700}
+  .zonehead .num{width:30px;height:30px;border-radius:50%;background:var(--go);color:var(--goInk);display:grid;place-items:center;font-weight:700;font-size:14px;flex:0 0 auto;box-shadow:0 2px 0 var(--goEdge)}
+  .zonehead i{flex:1;height:3px;border-radius:3px;background:var(--line)}
+  .lead{margin:0 4px 16px;color:var(--soft);font-size:14.5px;line-height:1.45}
+
+  .guide details{background:var(--paper);border-radius:20px;margin:0 0 10px;padding:0 16px;box-shadow:0 4px 0 var(--line)}
+  .guide summary{list-style:none;cursor:pointer;padding:14px 0;font-weight:600;font-size:16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .guide summary::-webkit-details-marker{display:none}
+  .guide summary .t{display:flex;align-items:center;gap:10px}
+  .guide summary .emo{font-size:20px}
+  .guide summary::after{content:"+";font-size:22px;color:var(--soft);font-weight:400}
+  .guide details[open] summary::after{content:"\2013"}
+  .guide details p{color:var(--ink);font-size:14.5px;line-height:1.5;margin:0 0 14px}
+
+  .curr-row{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 6px}
+  .curr{flex:1;min-width:150px;background:var(--paper);border-radius:20px;padding:12px 14px;box-shadow:0 4px 0 var(--line);display:flex;align-items:center;gap:10px}
+  .curr .ic{font-size:24px}
+  .curr h4{margin:0;font-size:14.5px}
+  .curr p{margin:1px 0 0;font-size:12.5px;color:var(--soft)}
+
+  .item{display:flex;gap:14px;align-items:flex-start;background:var(--paper);border-radius:22px;padding:14px 16px;margin-bottom:10px;box-shadow:0 4px 0 var(--line)}
+  .item .ic{width:42px;min-width:42px;height:42px;border-radius:14px;display:grid;place-items:center;font-size:20px}
+  .item .tx{flex:1;min-width:0}
+  .item h4{margin:0 0 3px;font-size:15.5px;font-weight:600}
+  .item p{margin:0;font-size:13.5px;color:var(--soft);line-height:1.4}
+  .item .time{flex:0 0 auto;background:var(--off);color:var(--offInk);border-radius:999px;padding:4px 11px;font-size:12.5px;font-weight:600;white-space:nowrap;align-self:flex-start}
+  .item .time.hi{background:var(--butter);color:#6B5310}
+
+  .report{background:var(--paper);border-radius:24px;padding:20px 22px;box-shadow:0 5px 0 var(--line);margin-bottom:6px}
+  .report h3{margin:0 0 10px;font-size:16.5px}
+  .report ol{margin:0;padding-left:20px}
+  .report li{font-size:14px;line-height:1.6;color:var(--ink)}
+
+  footer{padding:34px 0 50px;text-align:center;color:var(--soft);font-size:13.5px}
+  footer a{text-decoration:underline;color:var(--soft)}
+  .footlinks{display:flex;gap:18px;justify-content:center;margin-bottom:14px;flex-wrap:wrap;font-weight:600}
+  .footlinks a{text-decoration:none;color:var(--ink)}
+
+  .foot-note{text-align:center;color:var(--soft);font-size:13.5px;margin:28px 8px 4px;line-height:1.5}
+  .foot-note b{color:var(--ink)}
+
+  @media (max-width:460px){
+    .hero{padding:24px 18px}
+    .curr{min-width:100%}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a class="brand" href="/">
+      <span class="mark">🌿</span>
+      Sanctuary Five Studios
+    </a>
+    <nav class="navlinks">
+      <a href="/#game">Snuggle Sanctuary</a>
+      <a href="/testers.html" class="on">Become a Tester</a>
+      <a href="/#studio">Studio</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <span class="tag">🧪 Closed testing round</span>
+    <h1>Welcome to the Sanctuary</h1>
+    <p>Snuggle Sanctuary is heading into closed testing ahead of its Google Play launch, and we'd love your help. Nothing technical required — just play, and tell us what happens.</p>
+    <p class="signoff">— Sanctuary Five Studios<br>Dane Sables</p>
+  </div>
+
+  <div class="cta-box">
+    <h2>Want to join?</h2>
+    <p>Email us to be added as a closed tester. We'll send you an opt-in link and a copy of this guide to follow along with.</p>
+    <a class="btn" href="mailto:sanctuary5studios@gmail.com?subject=I%27d%20like%20to%20test%20Snuggle%20Sanctuary">✉️ sanctuary5studios@gmail.com</a>
+  </div>
+
+  <div class="banner">
+    <div class="num">45–60<small>min</small></div>
+    <div class="lab">Total time to complete every check below, spread across a few sessions over your 14 days of testing. Play more if you're enjoying it — extra time in the Starlight Fair and rewild loop is genuinely useful data.</div>
+  </div>
+
+  <div class="zonehead"><span class="num">1</span><h2>How the game works</h2><i></i></div>
+  <p class="lead">Snuggle Sanctuary is a cosy idle/clicker game. You build up an animal sanctuary, watch it earn coins on its own, and use those coins to grow it further. There's no way to "lose" — it's about steady, relaxing progress.</p>
+
+  <div class="guide">
+    <details open>
+      <summary><span class="t"><span class="emo">🐾</span>The core loop</span></summary>
+      <p>You start with a founding pair of animals. Pat them for hearts, and over time new animals <b>arrive</b> on their own. Each animal earns coins automatically, faster the more you've upgraded its care. Coins buy care upgrades and facilities, which raise your income, which lets you afford the next thing.</p>
+    </details>
+    <details>
+      <summary><span class="t"><span class="emo">🏡</span>Zones and animals</span></summary>
+      <p>20 animals are split across 4 zones (5 each), unlocked in order as you progress. Each animal can also be <b>rehomed</b> — sent off to a good home for an adoption fee — after which the space can fill again. The founding pair in each zone always stays.</p>
+    </details>
+    <details>
+      <summary><span class="t"><span class="emo">📈</span>Care upgrades</span></summary>
+      <p>Each animal has 4 upgrade tracks (arrivals, staying close, adoption fee, space) up to level 20. Levelling these is the main way you spend coins early on.</p>
+    </details>
+    <details>
+      <summary><span class="t"><span class="emo">🌱</span>Rewilding (prestige)</span></summary>
+      <p>Once your sanctuary is well developed, you can <b>rewild</b> — release everything and start the zone over — in exchange for permanent conservation stars that boost your income forever after.</p>
+    </details>
+    <details>
+      <summary><span class="t"><span class="emo">🛡️</span>Guardians</span></summary>
+      <p>8 rare guardian animals can be unlocked with conservation stars, each giving a strong permanent bonus. Slots are limited, so which guardians you pick matters.</p>
+    </details>
+    <details>
+      <summary><span class="t"><span class="emo">🎪</span>Starlight Fair</span></summary>
+      <p>A bonus world you unlock through play (or purchase) containing an outfit wardrobe, and two mini-games — a match-3 and a lane-dodging game — played with tickets that refill over time.</p>
+    </details>
+    <details>
+      <summary><span class="t"><span class="emo">📖</span>The story</span></summary>
+      <p>A tap-through comic runs alongside your progress, following your ranger caring for Nana's old sanctuary. It unlocks in chapters as you play — no need to seek it out.</p>
+    </details>
+  </div>
+
+  <div class="zonehead"><span class="num">2</span><h2>Currencies</h2><i></i></div>
+  <div class="curr-row">
+    <div class="curr"><span class="ic">💛</span><div><h4>Hearts</h4><p>Everyday currency — pats, gifts, goals, ads</p></div></div>
+    <div class="curr"><span class="ic">💎</span><div><h4>Gems</h4><p>Rare — variants, guardian slots, long skips</p></div></div>
+    <div class="curr"><span class="ic">🎟️</span><div><h4>Tokens</h4><p>From the kindness jar &amp; season journal</p></div></div>
+  </div>
+
+  <div class="zonehead"><span class="num">3</span><h2>What to test</h2><i></i></div>
+  <p class="lead">Work through these roughly in order — they follow how a new player would naturally progress. Times are a rough guide, not a target.</p>
+
+  <div class="item">
+    <div class="ic" style="background:var(--mint)">🚪</div>
+    <div class="tx"><h4>First launch &amp; onboarding</h4><p>Set up your ranger (gender, skin tone, username), play through the intro comic and locked tutorial. Note anything confusing, stuck, or skippable that shouldn't be.</p></div>
+    <div class="time">5 min</div>
+  </div>
+  <div class="item">
+    <div class="ic" style="background:var(--peach)">🐣</div>
+    <div class="tx"><h4>Core loop &amp; first zone</h4><p>Pat animals, watch arrivals happen, rehome a couple, and push care upgrades on at least one animal to a high level. Confirm the egg-hatch animation plays on a new species.</p></div>
+    <div class="time">10 min</div>
+  </div>
+  <div class="item">
+    <div class="ic" style="background:var(--sky)">🏗️</div>
+    <div class="tx"><h4>Facilities, totems &amp; partner sanctuaries</h4><p>Buy a facility, complete a zone totem, and check a partner sanctuary. Confirm income actually goes up after each purchase.</p></div>
+    <div class="time">8 min</div>
+  </div>
+  <div class="item">
+    <div class="ic" style="background:var(--lav)">🌱</div>
+    <div class="tx"><h4>Your first rewild</h4><p>Do at least one full rewild. Check your conservation stars land correctly and your permanent bonus is visibly applied afterward.</p></div>
+    <div class="time">5 min</div>
+  </div>
+  <div class="item">
+    <div class="ic" style="background:var(--butter)">🎁</div>
+    <div class="tx"><h4>Ads &amp; VIP</h4><p>Watch a couple of optional (rewarded) ads. Confirm they're always skippable, the reward matches what was promised, and your kindness jar / VIP progress updates.</p></div>
+    <div class="time">5 min</div>
+  </div>
+  <div class="item">
+    <div class="ic" style="background:var(--blush)">🎪</div>
+    <div class="tx"><h4>Starlight Fair</h4><p>Once unlocked: try on a wardrobe item, play both mini-games at least once, and use a ticket refill. Check ticket gifting if you're in a herd.</p></div>
+    <div class="time hi">10 min</div>
+  </div>
+  <div class="item">
+    <div class="ic" style="background:var(--mint)">🌐</div>
+    <div class="tx"><h4>Cloud save &amp; herds</h4><p>Sign in with Google, force-close and reopen the app to confirm your save restored. If you can, test on a second device or with a friend's herd code.</p></div>
+    <div class="time hi">10 min</div>
+  </div>
+  <div class="item">
+    <div class="ic" style="background:var(--off)">⚙️</div>
+    <div class="tx"><h4>Settings &amp; general feel</h4><p>Try Day/Night/Follow-phone themes, battery saver mode, and sound sets. Note anything that feels slow, cluttered, or pushes you to spend money.</p></div>
+    <div class="time">5 min</div>
+  </div>
+
+  <div class="zonehead"><span class="num">4</span><h2>How to report issues</h2><i></i></div>
+  <div class="report">
+    <h3>For anything that breaks or feels off, send:</h3>
+    <ol>
+      <li>What you were doing right before it happened</li>
+      <li>What you expected vs. what actually happened</li>
+      <li>Your device model and Android version</li>
+      <li>A screenshot or screen recording if you can grab one</li>
+    </ol>
+  </div>
+
+  <p class="foot-note"><b>Thank you</b> — closed testing needs real players for real days, and every session you put in helps get this ready for launch. If something feels unclear or unfair at any point, that's exactly the kind of feedback we need most.</p>
+
+</main>
+
+<footer>
+  <div class="footlinks">
+    <a href="/#game">Snuggle Sanctuary</a>
+    <a href="/testers.html">Become a Tester</a>
+    <a href="/#studio">About</a>
+    <a href="/privacy.html">Privacy Policy</a>
+    <a href="mailto:sanctuary5studios@gmail.com">Contact</a>
+  </div>
+  <div class="wrap">© 2026 Sanctuary Five Studios. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
