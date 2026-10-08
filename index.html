@@ -118,6 +118,36 @@
   .seriescard{background:linear-gradient(160deg,var(--lav),var(--sky));border-radius:32px;padding:36px;text-align:center;margin-top:14px}
   .seriescard h3{margin:0 0 8px;font-size:22px;color:var(--lavInk)}
   .seriescard p{margin:0 auto 18px;max-width:520px;color:var(--lavInkSoft);opacity:.9}
+
+  /* ---- Mobile menu (burger) ---- */
+  .menu-btn{display:none;align-items:center;justify-content:center;width:38px;height:38px;border-radius:12px;background:var(--paper);box-shadow:0 3px 0 var(--line);border:none;cursor:pointer;flex:none;margin-left:8px;padding:0;color:var(--ink)}
+  .menu-btn:active{transform:translateY(2px)}
+  .menu-btn svg{width:20px;height:20px;display:block}
+  .menu-btn .l1,.menu-btn .l2,.menu-btn .l3{transition:transform .22s ease,opacity .18s ease;transform-origin:12px 12px}
+  .menu-btn[aria-expanded="true"] .l1{transform:translateY(6px) rotate(45deg)}
+  .menu-btn[aria-expanded="true"] .l2{opacity:0}
+  .menu-btn[aria-expanded="true"] .l3{transform:translateY(-6px) rotate(-45deg)}
+  .menu-btn:focus-visible,.s5menu a:focus-visible{outline:3px solid var(--goEdge);outline-offset:2px}
+  @media(max-width:620px){.menu-btn{display:inline-flex}}
+  body.menu-always .menu-btn{display:inline-flex;margin-left:0}
+  @media(max-width:620px){body.menu-always .back{display:none}}
+  .s5menu-scrim{position:fixed;inset:0;z-index:40;background:rgba(20,24,44,.35);opacity:0;pointer-events:none;transition:opacity .2s ease}
+  .s5menu{position:fixed;top:10px;left:12px;right:12px;z-index:41;max-width:420px;margin-left:auto;background:var(--paper);border-radius:24px;box-shadow:0 6px 0 var(--line),0 18px 40px rgba(20,24,44,.18);padding:14px 14px 16px;max-height:calc(100vh - 20px);overflow-y:auto;opacity:0;transform:translateY(-12px) scale(.98);pointer-events:none;transition:opacity .2s ease,transform .22s ease;visibility:hidden}
+  body.menu-open .s5menu-scrim{opacity:1;pointer-events:auto}
+  body.menu-open .s5menu{opacity:1;transform:none;pointer-events:auto;visibility:visible}
+  body.menu-open{overflow:hidden}
+  .s5menu-top{display:flex;align-items:center;justify-content:space-between;padding:2px 4px 10px}
+  .s5menu-top b{font-size:16px}
+  .s5menu-close{width:36px;height:36px;border-radius:12px;border:none;background:var(--bg);color:var(--ink);font-size:20px;line-height:1;cursor:pointer;font-family:inherit}
+  .s5menu-label{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);margin:12px 6px 6px}
+  .s5menu a{display:flex;align-items:center;gap:12px;padding:10px 10px;border-radius:16px;text-decoration:none;color:var(--ink);font-weight:600;font-size:16px}
+  .s5menu a:hover{background:var(--bg)}
+  .s5menu a.on{background:var(--bg)}
+  .s5menu a.on::after{content:"";margin-left:auto;width:8px;height:8px;border-radius:50%;background:var(--go)}
+  .s5menu .ic{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;font-size:18px;flex:none}
+  .s5menu .ic.mint{background:var(--mint)} .s5menu .ic.peach{background:var(--peach)} .s5menu .ic.lav{background:var(--lav)}
+  .s5menu .ic.sky{background:var(--sky)} .s5menu .ic.butter{background:var(--butter)} .s5menu .ic.blush{background:var(--blush)}
+  @media (prefers-reduced-motion: reduce){.s5menu,.s5menu-scrim,.menu-btn .l1,.menu-btn .l2,.menu-btn .l3{transition:none}}
 </style>
 </head>
 <body>
@@ -134,8 +164,25 @@
       <a href="#contact">Contact</a>
     </nav>
     <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="s5menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path class="l1" d="M4 6h16"/><path class="l2" d="M4 12h16"/><path class="l3" d="M4 18h16"/></svg></button>
   </div>
 </header>
+<div class="s5menu-scrim" id="s5menuScrim" hidden></div>
+<nav class="s5menu" id="s5menu" aria-label="Site menu">
+  <div class="s5menu-top"><b>Menu</b><button class="s5menu-close" id="s5menuClose" type="button" aria-label="Close menu">×</button></div>
+  <div class="s5menu-label">Explore</div>
+    <a href="#top" class="on" aria-current="page"><span class="ic mint">🏡</span>Home</a>
+    <a href="#game"><span class="ic peach">🐰</span>Snuggle Sanctuary</a>
+    <a href="/testers.html"><span class="ic butter">🧪</span>Become a Tester</a>
+    <a href="#studio"><span class="ic lav">🌿</span>Studio</a>
+  <div class="s5menu-label">Get in touch</div>
+    <a href="#contact"><span class="ic blush">💌</span>Contact</a>
+    <a href="https://discord.gg/Xa5dYacGJn" target="_blank" rel="noopener"><span class="ic sky">💬</span>Tester Discord</a>
+  <div class="s5menu-label">Info</div>
+    <a href="/privacy.html"><span class="ic mint">🔒</span>Privacy Policy</a>
+    <a href="/account-deletion.html"><span class="ic peach">🗑️</span>Account Deletion</a>
+</nav>
+
 <div id="top" class="wrap">
   <section class="hero">
     <span class="tag">🐣 Coming soon to Google Play</span>
@@ -248,6 +295,26 @@
     }
     setIcon();
   });
+})();
+</script>
+<script>
+(function(){
+  var btn=document.getElementById('menuBtn'), menu=document.getElementById('s5menu'),
+      scrim=document.getElementById('s5menuScrim'), closeBtn=document.getElementById('s5menuClose');
+  if(!btn||!menu) return;
+  scrim.hidden=false;
+  function setOpen(open){
+    document.body.classList.toggle('menu-open',open);
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    btn.setAttribute('aria-label',open?'Close menu':'Open menu');
+    if(open){ var f=menu.querySelector('a'); if(f) f.focus({preventScroll:true}); } else { btn.focus({preventScroll:true}); }
+  }
+  btn.addEventListener('click',function(){ setOpen(!document.body.classList.contains('menu-open')); });
+  closeBtn.addEventListener('click',function(){ setOpen(false); });
+  scrim.addEventListener('click',function(){ setOpen(false); });
+  menu.addEventListener('click',function(e){ if(e.target.closest('a')) setOpen(false); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&document.body.classList.contains('menu-open')) setOpen(false); });
+  window.addEventListener('resize',function(){ if(getComputedStyle(btn).display==='none'&&document.body.classList.contains('menu-open')) setOpen(false); });
 })();
 </script>
 </body>
