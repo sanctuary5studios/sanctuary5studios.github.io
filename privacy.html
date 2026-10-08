@@ -51,21 +51,37 @@
   .back{font-weight:600;font-size:14.5px;text-decoration:none;color:var(--soft)}
   .theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:12px;background:var(--paper);box-shadow:0 3px 0 var(--line);border:none;cursor:pointer;font-size:17px;line-height:1;flex:none}
   .theme-toggle:active{transform:translateY(2px)}
+  .theme-toggle:focus-visible,a:focus-visible{outline:3px solid var(--goEdge);outline-offset:2px}
   main{padding:48px 0 80px}
   .card{background:var(--paper);border-radius:32px;padding:40px;box-shadow:0 6px 0 var(--line)}
   @media(max-width:560px){.card{padding:26px}}
-  h1{font-size:clamp(26px,5vw,34px);margin:0 0 6px;font-weight:700}
+  h1{font-size:clamp(26px,5vw,34px);margin:0 0 6px;font-weight:700;text-wrap:balance}
   .updated{color:var(--soft);font-size:14px;margin:0 0 30px}
-  h2{font-size:19px;margin:32px 0 10px;font-weight:700}
-  h2:first-of-type{margin-top:0}
+  h2{font-size:19px;margin:34px 0 10px;font-weight:700;scroll-margin-top:80px}
+  h3{font-size:16px;margin:20px 0 6px;font-weight:600}
   p{margin:0 0 12px;color:var(--ink)}
   ul{margin:0 0 12px;padding-left:22px}
   li{margin-bottom:6px}
   .tag{display:inline-block;background:var(--mint);color:var(--goInk);border-radius:999px;padding:3px 12px;font-weight:600;font-size:12.5px;margin-bottom:4px}
+  .glance{background:var(--bg);border-radius:24px;padding:20px 22px;margin:0 0 8px}
+  .glance h2{margin:0 0 10px;font-size:17px}
+  .glance ul{margin:0;padding-left:0;list-style:none;display:grid;gap:8px}
+  .glance li{margin:0;display:grid;grid-template-columns:28px 1fr;gap:6px;align-items:start}
+  .glance li span:first-child{font-size:18px;line-height:1.4}
+  .toc{display:flex;flex-wrap:wrap;gap:6px;margin:18px 0 0}
+  .toc a{font-size:13px;font-weight:600;text-decoration:none;color:var(--ink);background:var(--paper);border-radius:999px;padding:4px 11px;box-shadow:0 2px 0 var(--line)}
+  .tablewrap{overflow-x:auto;margin:0 0 12px;border-radius:18px;border:1px solid var(--line)}
+  table{border-collapse:collapse;width:100%;font-size:14.5px}
+  td:first-child{width:38%}
+  th,td{text-align:left;padding:10px 14px;vertical-align:top;border-bottom:1px solid var(--line)}
+  tr:last-child td{border-bottom:none}
+  th{background:var(--bg);font-weight:600}
+  .note{background:var(--butter);color:var(--ink);border-radius:18px;padding:12px 16px;margin:0 0 12px;font-size:15px}
   .contact-box{background:var(--bg);border-radius:20px;padding:18px 20px;margin-top:8px}
   .contact-box a{font-weight:600}
   footer{padding:34px 0 50px;text-align:center;color:var(--soft);font-size:13.5px}
   footer a{text-decoration:underline;color:var(--soft)}
+  @media (prefers-reduced-motion: reduce){body{transition:none}}
 </style>
 </head>
 <body>
@@ -85,55 +101,121 @@
   <div class="card">
     <span class="tag">Snuggle Sanctuary</span>
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: 29 September 2026</p>
-    <p>Sanctuary Five Studios ("we", "us", "our") built the game Snuggle Sanctuary as a free, ad- and purchase-supported app. This page explains what information the app collects, how it's used, and the choices you have. If you have questions, contact us using the details at the bottom of this page.</p>
-    <h2>Information we collect</h2>
-    <p>Snuggle Sanctuary can be played entirely as a guest, with no account required. If you choose to link a Google account for cloud save, herds, or other online features, we collect and store the following through Firebase (Google's app development platform):</p>
+    <p class="updated">Last updated: 8 October 2026</p>
+
+    <p>Sanctuary Five Studios ("we", "us", "our") is a small independent studio in New Zealand. We make Snuggle Sanctuary, a free animal sanctuary game for Android supported by optional ads and optional purchases. This policy explains what information the game uses, why, who can see it, and the choices you have.</p>
+
+    <div class="glance">
+      <h2>At a glance</h2>
+      <ul>
+        <li><span>🌱</span><span>You can play without signing in. The game still keeps a cloud backup of your sanctuary under a random ID, so you don't lose progress.</span></li>
+        <li><span>🏷️</span><span>Your ranger name, scores and badges appear on leaderboards that other players can see. Pick a name that doesn't identify you.</span></li>
+        <li><span>📺</span><span>Ads are rewarded videos you choose to watch. We ask for consent where the law requires it, and ads are rated for general audiences.</span></li>
+        <li><span>🔔</span><span>Notifications are off until you turn them on, and you can turn them off any time.</span></li>
+        <li><span>🚫</span><span>We don't sell your information, and we don't use analytics tracking tools.</span></li>
+        <li><span>🗑️</span><span>You can delete your online account inside the game: Settings → Online account and cloud save → Delete my online account.</span></li>
+      </ul>
+      <nav class="toc" aria-label="Sections">
+        <a href="#collect">What we collect</a><a href="#see">What others see</a><a href="#ads">Ads</a><a href="#notifications">Notifications</a><a href="#purchases">Purchases</a><a href="#sharing">Sharing</a><a href="#keep">Storage &amp; deletion</a><a href="#choices">Your choices</a><a href="#children">Children</a><a href="#contact">Contact</a>
+      </nav>
+    </div>
+
+    <h2 id="collect">Information the game uses</h2>
+    <h3>Your game account</h3>
+    <p>When the game first connects to the internet, Firebase Authentication (a Google service) gives you a random user ID. This is a guest account: it has no name, email or password attached. We use it to back up your sanctuary and to run the online features below.</p>
+    <p>If you choose to link a Google account (Settings → Online account and cloud save), we also receive your Google account's email address and account ID from Google. We use them only to sign you back in and to restore your sanctuary on another phone.</p>
+
+    <h3>Your sanctuary and cloud backup</h3>
+    <p>The game stores your progress on your phone and keeps a backup copy in Cloud Firestore (Google's database). The backup contains your game data: animals, currencies, upgrades, outfits, story progress, purchases you own, how many ads you've watched (for VIP levels and the kindness jar), your ranger's name and look, and a random code that tells your devices apart (for example <em>dev-x7k2q9ab</em>; it isn't your phone's hardware ID).</p>
+
+    <h3>Ranger name</h3>
+    <p>Every ranger name is one of a kind. To keep it that way, we store a record that links your ranger name to your user ID.</p>
+
+    <h3>Community features</h3>
     <ul>
-      <li><strong>Account info</strong> — your Google account email address and a unique user ID, used to identify your account and sign you back in on other devices.</li>
-      <li><strong>Game data</strong> — your in-game username, sanctuary progress (animals, currencies, upgrades), herd membership, and related records, so your progress can sync and be restored.</li>
+      <li><strong>Leaderboards</strong>: your ranger name, scores, VIP level, supporter badge and best event badge.</li>
+      <li><strong>Events</strong>: your event points, your final rank and any prize you're given.</li>
+      <li><strong>Herds</strong>: the herd you join, your ranger name, VIP level, supporter badge and the help points you earn.</li>
+      <li><strong>Ticket gifts</strong>: who sent a game ticket to whom, and on which day (only within your herd).</li>
+      <li><strong>The Great Migration and weekly votes</strong>: your contribution is added to world totals, and a record of your vote stops you voting twice in a week.</li>
     </ul>
-    <p>If you play as a guest without linking an account, we don't collect your name, email address, or other directly identifying information through the app itself — your progress stays on your device.</p>
-    <p>The app may also collect the following, through third-party services described below:</p>
+
+    <h3>Notifications (only if you turn them on)</h3>
+    <p>If you turn notifications on, we store a notification token from Firebase Cloud Messaging, which choices you made (events and prizes), and your phone's time zone. The daily gift reminder is set up on your phone and doesn't use our server.</p>
+
+    <h3>Ads and purchases</h3>
+    <p>See the <a href="#ads">Ads</a> and <a href="#purchases">Purchases</a> sections below. We never see your payment details.</p>
+
+    <h3>What we don't collect</h3>
+    <p>We don't use Firebase Analytics or any other analytics or tracking tools. We don't collect your contacts, photos, precise location, microphone or camera. Google Play may collect basic crash and performance reports under its own policies, which helps us fix bugs.</p>
+
+    <h2 id="see">What other players can see</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Where</th><th>What other players see</th></tr></thead>
+        <tbody>
+          <tr><td>Leaderboards and event rankings</td><td>Your ranger name, score, VIP level, supporter badge and best event badge</td></tr>
+          <tr><td>Your herd</td><td>Your ranger name, VIP level, supporter badge and help points</td></tr>
+          <tr><td>Ticket gifts</td><td>The ranger name of the herd member who sent the ticket</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Other players never see your email address, your Google account or your user ID. Because your ranger name is public, please don't use your real full name or anything that identifies you.</p>
+
+    <h2 id="ads">Advertising (Google AdMob)</h2>
+    <p>Snuggle Sanctuary only shows rewarded video ads that you choose to watch for an in-game reward. There are no banner ads, no full-screen ads that interrupt play, and no ads you have to watch to progress. Ads are limited to content rated for general audiences.</p>
+    <p>Ads are provided by Google AdMob. When an ad loads, AdMob may collect your device's advertising ID, IP address, device and app information, and how you interact with the ad, to show and measure ads and prevent fraud. If you're in the European Economic Area, the United Kingdom, Switzerland or a US state with privacy laws, we show Google's consent message before any ad loads. There you can consent, refuse ("Do not consent"), or manage your choices, and you can change them any time in <strong>Settings → Privacy and ad choices</strong>.</p>
+    <p>To learn how Google uses information from apps that use its services, see <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses information from sites or apps that use our services</a>.</p>
+
+    <h2 id="notifications">Notifications</h2>
+    <p>The game asks once whether you'd like notifications. If you say yes, it can tell you when an event starts, when an event has 3 hours left, when an event prize is ready, and when your daily gift is waiting. You can switch each one off in <strong>Settings → Notifications</strong> or in your phone's settings. When you turn notifications off, we delete your notification token.</p>
+
+    <h2 id="purchases">In-app purchases</h2>
+    <p>Optional purchases (such as gem or heart packs and the Supporter pack) are processed by Google Play's billing system. Google handles your payment details under its own policies. We only receive confirmation of what you bought, so the game can give you the item and restore it later.</p>
+
+    <h2 id="sharing">How information is shared</h2>
+    <p>We don't sell your personal information, and we don't share it for other companies' marketing. It is handled only by:</p>
     <ul>
-      <li><strong>Advertising data</strong> — when you choose to watch a rewarded ad, our ad partner (Google AdMob) may collect device identifiers, approximate location, and ad interaction data to serve and measure ads.</li>
-      <li><strong>Purchase data</strong> — if you make an in-app purchase, the transaction is processed by Google Play's billing system. We do not see or store your payment details (card numbers, etc.) — these are handled entirely by Google Play.</li>
-      <li><strong>Basic app diagnostics</strong> — general crash and performance data may be collected automatically by Google Play services to help us fix bugs.</li>
+      <li><strong>Google (Firebase, AdMob, Google Play)</strong>, the services that run the game, as described above. Their handling of data is covered by the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>, <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase privacy and security</a> and the <a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener">AdMob data disclosure</a>.</li>
+      <li><strong>Other players</strong>, only the public game details listed in <a href="#see">What other players can see</a>.</li>
+      <li><strong>Authorities</strong>, if the law requires it.</li>
     </ul>
-    <h2>Advertising (Google AdMob)</h2>
-    <p>Snuggle Sanctuary uses optional, rewarded video ads only — never full-screen interstitials or ads required to progress. Ads are served through Google AdMob, which may use device identifiers (such as the Android Advertising ID) to personalize ads or measure ad performance, depending on your device and consent settings. You can control ad personalization through your device's settings, and where required, we present a consent form (via Google's User Messaging Platform) before showing personalized ads.</p>
-    <p>For more information on how Google uses data from apps that use its services, see <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Google's Partner Sites policy</a>.</p>
-    <h2>In-app purchases</h2>
-    <p>Snuggle Sanctuary offers optional in-app purchases (such as heart or gem packs) processed through Google Play's billing system. All payment information is handled by Google Play directly under its own privacy and security policies — we do not receive or store your payment card details.</p>
-    <h2>Children's privacy</h2>
-    <p>Snuggle Sanctuary is not directed at children under 13 and is not designed as a children's app. We do not knowingly collect personal information from children. If we become aware that a child under 13 has provided us with personal information, we will take steps to delete it.</p>
-    <h2>Data sharing</h2>
-    <p>We do not sell your personal information. Data collected by our third-party service providers (Firebase, Google AdMob, Google Play billing, Google Play services) is subject to their own privacy policies:</p>
+
+    <h2 id="keep">Where it's stored, how long, and deleting it</h2>
+    <p>Our game database is hosted by Google in Sydney, Australia (australia-southeast1). Google may process data in other countries under its own safeguards. Information is sent over encrypted connections, and our database rules let each player change only their own records.</p>
+    <p>We keep your game data while your account exists, so your sanctuary is safe. You can delete it at any time:</p>
     <ul>
-      <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
-      <li><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase data disclosure</a></li>
-      <li><a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener">AdMob data disclosure</a></li>
+      <li><strong>In the game:</strong> Settings → Online account and cloud save → <strong>Delete my online account</strong>. This removes your cloud backup, ranger name record, leaderboard and event entries, event prizes, herd membership, ticket gifts and notification token, and then deletes the account itself.</li>
+      <li><strong>By email:</strong> see our <a href="/account-deletion.html">Account Deletion</a> page.</li>
+      <li><strong>On your phone:</strong> uninstalling the game removes the copy stored on your phone.</li>
     </ul>
-    <h2>Data retention and deletion</h2>
-    <p>If you play as a guest, your in-game progress is stored locally on your device, and uninstalling the app removes this data. If you link a Google account, your progress and account info are also stored in the cloud via Firebase so they can sync across devices. You can request deletion of your account and its associated cloud data at any time — see our <a href="/account-deletion.html">Account Deletion</a> page for how.</p>
-    <h2>Your choices</h2>
+    <p>After deletion, world totals that already include your contribution (such as the Great Migration and weekly vote counts) stay as anonymous totals. Google Play keeps its own purchase records under its own policies.</p>
+
+    <h2 id="choices">Your choices and rights</h2>
     <ul>
-      <li>You can opt out of personalized advertising through your device's ad settings (Settings → Google → Ads, on most Android devices).</li>
-      <li>You can decline the ad-consent prompt where shown; this may result in seeing non-personalized ads instead.</li>
-      <li>You can play as a guest to avoid creating an account, and uninstall the app at any time to remove locally stored data.</li>
-      <li>You can request deletion of your linked account and cloud-saved data — see <a href="/account-deletion.html">Account Deletion</a>.</li>
+      <li>Play without linking a Google account.</li>
+      <li>Change or withdraw ad consent in <strong>Settings → Privacy and ad choices</strong>, or reset or delete your advertising ID in your phone's settings (on most Android phones: Settings → Google → Ads).</li>
+      <li>Turn notifications on or off in <strong>Settings → Notifications</strong>.</li>
+      <li>Change your ranger name any time in <strong>Settings → Your ranger and username</strong>.</li>
+      <li>Delete your online account in the game, or ask us to.</li>
+      <li>Ask us for a copy of your information, or ask us to correct it. Under New Zealand's Privacy Act 2020 you can do this at any time, and if you're unhappy with how we handle your information you can complain to the <a href="https://www.privacy.org.nz" target="_blank" rel="noopener">Office of the Privacy Commissioner</a>. Depending on where you live (for example the EU, UK or some US states), you may have similar rights, which we'll honour on request.</li>
     </ul>
+
+    <h2 id="children">Children's privacy</h2>
+    <p>Snuggle Sanctuary is made for players aged 13 and over. It isn't directed at children under 13, and we don't knowingly collect information from them. If you believe a child under 13 has given us information, contact us and we'll delete it.</p>
+
     <h2>Changes to this policy</h2>
-    <p>We may update this privacy policy from time to time, for example as we add new features. Changes will be posted on this page with an updated "Last updated" date.</p>
-    <h2>Contact us</h2>
-    <p>If you have any questions about this privacy policy or how your information is handled, please reach out:</p>
+    <p>When we add features that change how information is used, we'll update this page and the "Last updated" date. For important changes we'll also let players know in the game.</p>
+
+    <h2 id="contact">Contact us</h2>
+    <p>Questions, requests or worries about your information? Get in touch with Sanctuary Five Studios, New Zealand:</p>
     <div class="contact-box">
       ✉️ <a href="mailto:sanctuary5studios@gmail.com">sanctuary5studios@gmail.com</a>
     </div>
   </div>
 </main>
 <footer>
-  <div class="wrap">© 2026 Sanctuary Five Studios. All rights reserved.</div>
+  <div class="wrap">© 2026 Sanctuary Five Studios. All rights reserved. · <a href="/account-deletion.html">Account Deletion</a></div>
 </footer>
 <script>
 (function(){
