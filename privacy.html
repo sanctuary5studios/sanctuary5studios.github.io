@@ -148,7 +148,7 @@
   <div class="card">
     <span class="tag">Snuggle Sanctuary</span>
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: 8 October 2026</p>
+    <p class="updated">Last updated: 12 October 2026</p>
 
     <p>Sanctuary Five Studios ("we", "us", "our") is a small independent studio in New Zealand. We make Snuggle Sanctuary, a free animal sanctuary game for Android supported by optional ads and optional purchases. This policy explains what information the game uses, why, who can see it, and the choices you have.</p>
 
@@ -159,11 +159,12 @@
         <li><span>🏷️</span><span>Your ranger name, scores and badges appear on leaderboards that other players can see. Pick a name that doesn't identify you.</span></li>
         <li><span>📺</span><span>Ads are rewarded videos you choose to watch. We ask for consent where the law requires it, and ads are rated for general audiences.</span></li>
         <li><span>🔔</span><span>Notifications are off until you turn them on, and you can turn them off any time.</span></li>
-        <li><span>🚫</span><span>We don't sell your information, and we don't use analytics tracking tools.</span></li>
+        <li><span>🎂</span><span>The game asks for your month and year of birth once. The answer stays on your phone and is never sent to us.</span></li>
+      <li><span>🚫</span><span>We don't sell your information, and we don't use analytics tracking tools.</span></li>
         <li><span>🗑️</span><span>You can delete your online account inside the game: Settings → Online account and cloud save → Delete my online account.</span></li>
       </ul>
       <nav class="toc" aria-label="Sections">
-        <a href="#collect">What we collect</a><a href="#see">What others see</a><a href="#ads">Ads</a><a href="#notifications">Notifications</a><a href="#purchases">Purchases</a><a href="#sharing">Sharing</a><a href="#keep">Storage &amp; deletion</a><a href="#choices">Your choices</a><a href="#children">Children</a><a href="#contact">Contact</a>
+        <a href="#collect">What we collect</a><a href="#age">Age question</a><a href="#see">What others see</a><a href="#ads">Ads</a><a href="#notifications">Notifications</a><a href="#purchases">Purchases</a><a href="#sharing">Sharing</a><a href="#keep">Storage &amp; deletion</a><a href="#choices">Your choices</a><a href="#children">Children</a><a href="#contact">Contact</a>
       </nav>
     </div>
 
@@ -189,6 +190,9 @@
 
     <h3>Notifications (only if you turn them on)</h3>
     <p>If you turn notifications on, we store a notification token from Firebase Cloud Messaging, which choices you made (events and prizes), and your phone's time zone. The daily gift reminder is set up on your phone and doesn't use our server.</p>
+
+    <h3 id="age">Age question</h3>
+    <p>The first time you open the game, it asks for the month and year you were born. We use this only to check that you're 13 or over, because the game is made for players aged 13 and up. Your answer is kept on your phone. It isn't sent to our server, and it isn't included in your cloud backup.</p>
 
     <h3>Ads and purchases</h3>
     <p>See the <a href="#ads">Ads</a> and <a href="#purchases">Purchases</a> sections below. We never see your payment details.</p>
@@ -218,7 +222,15 @@
     <p>The game asks once whether you'd like notifications. If you say yes, it can tell you when an event starts, when an event has 3 hours left, when an event prize is ready, and when your daily gift is waiting. You can switch each one off in <strong>Settings → Notifications</strong> or in your phone's settings. When you turn notifications off, we delete your notification token.</p>
 
     <h2 id="purchases">In-app purchases</h2>
-    <p>Optional purchases (such as gem or heart packs and the Supporter pack) are processed by Google Play's billing system. Google handles your payment details under its own policies. We only receive confirmation of what you bought, so the game can give you the item and restore it later.</p>
+    <p>Optional purchases (such as gem or heart packs and the Supporter pack) are processed by Google Play's billing system. Google handles your payment details under its own policies, and we never see your card or bank details.</p>
+    <p>When you buy something, the game sends Google's purchase confirmation to our server, which checks it with Google before giving you the item. So that each purchase is honoured once, and to help with refunds and fraud prevention, we keep a purchase record containing:</p>
+    <ul>
+      <li>your user ID</li>
+      <li>the item you bought and Google Play's order number</li>
+      <li>when it was bought</li>
+      <li>a scrambled fingerprint of the purchase confirmation (not the confirmation itself)</li>
+    </ul>
+    <p>Items you own permanently (such as the Supporter pack or a theme) are also saved to your account so they can be restored on a new phone.</p>
 
     <h2 id="sharing">How information is shared</h2>
     <p>We don't sell your personal information, and we don't share it for other companies' marketing. It is handled only by:</p>
@@ -236,6 +248,7 @@
       <li><strong>By email:</strong> see our <a href="/account-deletion.html">Account Deletion</a> page.</li>
       <li><strong>On your phone:</strong> uninstalling the game removes the copy stored on your phone.</li>
     </ul>
+    <p>Purchase records (see <a href="#purchases">In-app purchases</a>) are kept for as long as we need them to handle refunds, prevent fraud and meet our legal record-keeping obligations, even after you delete your account.</p>
     <p>After deletion, world totals that already include your contribution (such as the Great Migration and weekly vote counts) stay as anonymous totals. Google Play keeps its own purchase records under its own policies.</p>
 
     <h2 id="choices">Your choices and rights</h2>
@@ -249,7 +262,7 @@
     </ul>
 
     <h2 id="children">Children's privacy</h2>
-    <p>Snuggle Sanctuary is made for players aged 13 and over. It isn't directed at children under 13, and we don't knowingly collect information from them. If you believe a child under 13 has given us information, contact us and we'll delete it.</p>
+    <p>Snuggle Sanctuary is made for players aged 13 and over. It isn't directed at children under 13, and we don't knowingly collect information from them. The game asks for your month and year of birth when it first opens (see <a href="#age">Age question</a>). If you're under 13, the game won't let you play, and nothing about your age is sent to us. If you believe a child under 13 has given us information, contact us and we'll delete it.</p>
 
     <h2>Changes to this policy</h2>
     <p>When we add features that change how information is used, we'll update this page and the "Last updated" date. For important changes we'll also let players know in the game.</p>
