@@ -46,7 +46,8 @@
   header{position:sticky;top:0;z-index:10;background:var(--headerBg);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
   .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;max-width:1000px;margin:0 auto}
   .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;text-decoration:none;color:var(--ink)}
-  .brand .mark{width:34px;height:34px;border-radius:12px;background:linear-gradient(160deg,var(--mint),var(--sky));display:grid;place-items:center;box-shadow:0 3px 0 var(--goEdge)}
+  .brand .mark{width:46px;height:46px;border-radius:12px;background:#f3faf7;display:grid;place-items:center;box-shadow:0 3px 0 var(--goEdge)}
+  .brand .mark img{width:40px;height:40px;display:block}
   .navRight{display:flex;align-items:center;gap:14px}
   .back{font-weight:600;font-size:14.5px;text-decoration:none;color:var(--soft)}
   .theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:12px;background:var(--paper);box-shadow:0 3px 0 var(--line);border:none;cursor:pointer;font-size:17px;line-height:1;flex:none}
@@ -106,7 +107,7 @@
 <header>
   <div class="nav">
     <a class="brand" href="/">
-      <span class="mark">🌿</span>
+      <span class="mark"><img src="/logo.png" alt="" width="40" height="40"></span>
       Sanctuary Five Studios
     </a>
     <div class="navRight">
