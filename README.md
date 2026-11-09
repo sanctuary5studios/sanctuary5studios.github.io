@@ -13,7 +13,7 @@ Plain static HTML on GitHub Pages: no build step, no dependencies.
 - `partnerships.html` Partnerships & Investment Enquiries (expression of interest only)
 - `contact.html` Contact form
 - `privacy-notice.html` Website privacy notice
-- `testers.html`, `animation.html`, `privacy.html`, `account-deletion.html` Snuggle Sanctuary pages
+- `testers.html`, `privacy.html`, `account-deletion.html` Snuggle Sanctuary pages
 - `404.html`, `sitemap.xml`, `robots.txt`
 
 ## Shared code
