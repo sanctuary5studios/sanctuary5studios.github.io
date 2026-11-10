@@ -9,7 +9,7 @@ Plain static HTML on GitHub Pages: no build step, no dependencies.
 - `interactive.html` SFS Interactive (games & digital products division)
 - `snuggle-sanctuary.html` Snuggle Sanctuary project page
 - `world-travel-adventures.html` World Travel Adventures game page (images in `img/world-travel-adventures/`)
-- `snuggle-hollow.html` Snuggle Hollow game page (images in `img/snuggle-hollow/`)
+- `snuggle-hollow.html` Snuggle Hollow game page (images in `img/snuggle-hollow/`); its hero is an illustrated, animated SVG valley that follows the visitor's time of day (styles under "Snuggle Hollow" in `assets/site.css`)
 - `lab.html` Innovation Lab (project showcase with status filters)
 - `about.html` About SFS
 - `partnerships.html` Partnerships & Investment Enquiries (expression of interest only)

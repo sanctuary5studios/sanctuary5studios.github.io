@@ -636,3 +636,119 @@ a:hover .go svg{transform:translateX(4px)}
 :root[data-theme="light"] .project-snuggle-hollow{--accent:#15803D;--accent2:#DB2777}
 /* Three projects sit side by side on wide screens */
 @media (min-width:1040px){.proj-grid.n3{grid-template-columns:repeat(3,1fr)}.proj-grid.n3 .proj h3{font-size:22px}.proj-grid.n3 .proj .body{padding:24px}}
+
+/* =========================================================
+   Snuggle Hollow: illustrated valley hero
+   ========================================================= */
+.hollow-hero{
+  position:relative;isolation:isolate;overflow:hidden;
+  height:clamp(560px,50vw,780px);
+  --sky-top:#4FB3F6;--sky-mid:#9FD8FF;--sky-low:#E3F6FF;--sun:#FFF6C9;--sun-glow:#FFE89A;--sun-shade:#D9D3BD;--cloud:#FFFFFF;
+  --far:#9DBEE0;--snow:#FFFFFF;--hill3:#9ADB95;--hill2:#6FC772;--hill1:#55B262;--meadow:#7ED277;--meadow-dark:#4EA454;
+  --tree:#45AA58;--tree-hi:#8BDB7E;--tree-dark:#2F8A48;--trunk:#8A5A3C;
+  --water:#5EC4F2;--water-hi:#E6F8FF;--water-deep:#3C9BD6;--bank:#3F9A50;
+  --house:#FFF8EC;--roof:#E06A55;--roof-dark:#B9503F;--door:#9A6542;--window:#8DB4D6;
+  --wood:#B57A4E;--wood-dark:#7E5032;--stone:#C9C3BA;--stone-hi:#E2DDD5;--stone-line:#A79F94;--shadow:rgba(30,50,30,.16);
+  --stars:0;--glow:0;--petals:1;--tint:#FFFFFF;--tint-op:0;
+}
+.hollow-hero[data-time="morning"]{
+  --sky-top:#86CDFA;--sky-mid:#CFEAFF;--sky-low:#FFE6C4;--sun:#FFF3B8;--sun-glow:#FFD98A;--cloud:#FFFDF8;
+  --far:#A9C6E6;--hill3:#A5DC98;--hill2:#7BCB78;--hill1:#5DB866;--meadow:#86D57C;--meadow-dark:#56A85A;
+  --tree:#4DAF5C;--tree-hi:#9BE08A;--water:#80D2F5;--water-deep:#4FA8DD;--bank:#4A9E52;--window:#9CBEDC;
+  --tint:#FFD9A0;--tint-op:.08;
+}
+.hollow-hero[data-time="golden"]{
+  --sky-top:#6D78CF;--sky-mid:#F3A38C;--sky-low:#FFD38E;--sun:#FFD98A;--sun-glow:#FF9A55;--cloud:#FFDCC4;
+  --far:#B79BC5;--snow:#FFE4D6;--hill3:#B6BD72;--hill2:#94B05E;--hill1:#729B4E;--meadow:#A1C45F;--meadow-dark:#6F9541;
+  --tree:#6F9B48;--tree-hi:#C2CF6E;--tree-dark:#4E7A35;
+  --water:#8FB4E4;--water-hi:#FFE6CC;--water-deep:#6A86C4;--bank:#5E8A3C;--house:#FFE7C9;--window:#FFD27A;
+  --tint:#FF9F50;--tint-op:.12;
+}
+.hollow-hero[data-time="night"]{
+  --sky-top:#08102F;--sky-mid:#1A2760;--sky-low:#384784;--sun:#F3F0DC;--sun-glow:#8FA3F5;--sun-shade:#CFCAB0;--cloud:#46528C;
+  --far:#2B386B;--snow:#8E9CCF;--hill3:#22416A;--hill2:#1C3A5B;--hill1:#17324E;--meadow:#1E4650;--meadow-dark:#14363E;
+  --tree:#1B4746;--tree-hi:#2B5E5A;--tree-dark:#123536;--trunk:#3B2C3A;
+  --water:#3A5AA3;--water-hi:#A9BEFF;--water-deep:#26407D;--bank:#10303A;--house:#4C5482;--roof:#6E4060;--roof-dark:#4E2E46;--door:#3E2E44;--window:#FFD27A;
+  --wood:#5E4656;--wood-dark:#40303E;--stone:#5D6286;--stone-hi:#767CA2;--stone-line:#474C70;--shadow:rgba(0,0,10,.3);
+  --stars:1;--glow:1;--petals:0;--tint:#1E2A78;--tint-op:.3;
+}
+.hollow-svg{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:-1}
+.hollow-svg *{transition:fill 1.4s ease,stop-color 1.4s ease,opacity 1.4s ease,stroke 1.4s ease}
+.hollow-svg [data-depth]{transition:transform .5s ease-out}
+
+/* Sun and moon travel across the sky */
+.hh-sun{transform:translate(900px,200px);transition:transform 1.6s cubic-bezier(.4,.1,.2,1)}
+[data-time="morning"] .hh-sun{transform:translate(1180px,300px)}
+[data-time="golden"] .hh-sun{transform:translate(1270px,400px)}
+[data-time="night"] .hh-sun{transform:translate(1320px,240px)}
+.hh-sun > circle:nth-child(2){transform-box:fill-box;transform-origin:center}
+[data-time="night"] .hh-sun > circle:nth-child(2){transform:scale(.8)}
+
+/* Gentle motion */
+.hh-cloud{animation:hhDrift 46s ease-in-out infinite alternate}
+.hh-cloud.c2{animation-duration:60s;animation-delay:-20s}
+.hh-cloud.c3{animation-duration:52s;animation-delay:-8s}
+.hh-cloud.c4{animation-duration:38s;animation-delay:-14s}
+@keyframes hhDrift{from{transform:translateX(-50px)}to{transform:translateX(60px)}}
+.hh-smoke{transform-box:fill-box;transform-origin:center;animation:hhSmoke 4s ease-out infinite;opacity:0}
+@keyframes hhSmoke{0%{transform:translate(0,0) scale(.6);opacity:0}20%{opacity:.75}100%{transform:translate(14px,-46px) scale(1.6);opacity:0}}
+.hh-wheel{animation:hhSpin 10s linear infinite}
+@keyframes hhSpin{to{transform:rotate(360deg)}}
+.hh-shimmer path,.hh-shimmer{animation:hhFlow 3.2s linear infinite}
+@keyframes hhFlow{to{stroke-dashoffset:-140}}
+.hh-bob{animation:hhBob 3.4s ease-in-out infinite}
+@keyframes hhBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.hh-ears{transform-box:fill-box;transform-origin:50% 100%;animation:hhEars 5s ease-in-out infinite}
+@keyframes hhEars{0%,86%,100%{transform:rotate(0)}90%{transform:rotate(-4deg)}95%{transform:rotate(3deg)}}
+.hh-sway{transform-box:fill-box;transform-origin:50% 100%;animation:hhSway 7s ease-in-out infinite}
+@keyframes hhSway{0%,100%{transform:rotate(0)}50%{transform:rotate(1.2deg)}}
+.hh-star{animation:hhTwinkle 4s ease-in-out infinite}
+@keyframes hhTwinkle{0%,100%{opacity:1}50%{opacity:.35}}
+.hh-firefly{animation:hhFirefly 5s ease-in-out infinite}
+@keyframes hhFirefly{0%,100%{opacity:.15;transform:translate(0,0)}50%{opacity:1;transform:translate(10px,-14px)}}
+.hh-petal{animation:hhPetal 15s linear infinite}
+@keyframes hhPetal{0%{transform:translate(0,0) rotate(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translate(260px,240px) rotate(540deg);opacity:0}}
+.hollow-hero.paused *{animation-play-state:paused!important}
+
+/* Copy over the sky */
+.hollow-copy{position:relative;z-index:2;padding-top:clamp(22px,4.4vw,60px)}
+.hollow-crumbs{display:inline-flex;gap:6px;font-size:13px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.78);color:#3D3150;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);margin-bottom:18px}
+.hollow-crumbs a{color:#3D3150;text-decoration:none}
+.hollow-crumbs a:hover{text-decoration:underline}
+.hollow-badge{display:inline-flex;align-items:center;gap:8px;font-family:"Fredoka","Space Grotesk",sans-serif;font-weight:600;font-size:14px;padding:6px 14px;border-radius:999px;background:#FFF7FB;color:#A02F5F;border:2px dashed #E9A3BF;margin-bottom:10px}
+.hollow-badge i{width:8px;height:8px;border-radius:50%;background:#A78BFA;display:block}
+.hollow-title{font-family:"Fredoka","Space Grotesk",sans-serif;font-weight:700;letter-spacing:-.01em;line-height:.92;margin:0;
+  font-size:clamp(56px,8.6vw,118px);color:#C9386A;
+  -webkit-text-stroke:clamp(8px,1.1vw,14px) #FFFFFF;paint-order:stroke fill;
+  filter:drop-shadow(0 6px 0 rgba(150,40,90,.28)) drop-shadow(0 18px 24px rgba(40,20,60,.18))}
+.hollow-tag{display:inline-block;margin-top:clamp(14px,2vw,22px);font-family:"Fredoka","Inter",sans-serif;font-weight:500;font-size:clamp(16px,1.7vw,21px);
+  color:#5B3550;background:rgba(255,251,244,.94);padding:9px 18px;border-radius:999px;box-shadow:0 8px 24px -10px rgba(60,30,60,.35)}
+.hollow-times{display:flex;gap:6px;flex-wrap:wrap;margin-top:18px;padding:5px;border-radius:999px;background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);width:max-content;max-width:100%;box-shadow:0 8px 24px -12px rgba(30,30,60,.35)}
+.hollow-times button{appearance:none;border:0;background:none;font:inherit;font-family:"Fredoka","Inter",sans-serif;font-weight:500;font-size:14px;color:#4A3D5C;padding:7px 12px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.hollow-times button svg{width:16px;height:16px}
+.hollow-times button[aria-pressed="true"]{background:#4A3D5C;color:#FFF}
+.hollow-times button:focus-visible{outline:2px solid #C9386A;outline-offset:2px}
+.hollow-note{display:block;margin-top:8px;font-size:12.5px;color:#3D3150;opacity:.85;text-shadow:0 1px 0 rgba(255,255,255,.6)}
+[data-time="night"] .hollow-note{color:#E6E8FF;text-shadow:none}
+@media (max-width:640px){
+  .hollow-hero{height:600px}
+  /* keep Clover and friends in frame on phones */
+  .hollow-svg{width:1067px;height:600px;left:calc(50% - 700px);right:auto}
+  .hollow-tag{font-size:15px}
+  .hollow-times button{padding:7px 10px;font-size:13px}
+  .hollow-times button span{display:none}
+  .hollow-times button svg{width:18px;height:18px}
+}
+@media (prefers-reduced-motion: reduce){
+  .hollow-hero *{animation:none!important}
+  .hh-smoke,.hh-petal{display:none}
+}
+
+.hollow-times,.hollow-note{display:none}
+.js .hollow-times{display:flex}
+.js .hollow-note{display:block}
+.hollow-hero.instant .hollow-svg *{transition:none!important}
+.hollow-crumbs-row{display:block}
+.hollow-intro h2{font-size:clamp(28px,4vw,42px)}
+section.hollow-hero{padding:0}
+@media (max-width:640px){.js .hollow-note{display:none}}
