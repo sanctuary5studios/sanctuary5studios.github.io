@@ -26,4 +26,4 @@ Plain static HTML on GitHub Pages: no build step, no dependencies.
 All forms send through one function in `assets/site.js`. Set `SITE_CONFIG.formEndpoint`
 at the top of that file to a Formspree (or compatible) form URL, for example
 `https://formspree.io/f/xxxxxxxx`. That URL is public by design, so it contains no secrets.
-While it is empty, forms open the visitor's email app with the enquiry pre-filled.
+It is currently set to the Sanctuary Five Studios Formspree form. If it is ever emptied, forms fall back to opening the visitor's email app with the enquiry pre-filled.

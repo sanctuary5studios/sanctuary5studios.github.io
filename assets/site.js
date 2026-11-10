@@ -7,7 +7,7 @@
    the visitor's email app with the enquiry pre-filled.
    --------------------------------------------------------- */
 var SITE_CONFIG = {
-  formEndpoint: '',
+  formEndpoint: 'https://formspree.io/f/mnppevoy',
   email: 'hello@sanctuaryfivestudios.com'
 };
 
@@ -269,6 +269,8 @@ var SITE_CONFIG = {
     var ep = (SITE_CONFIG.formEndpoint || '').trim();
     if (ep) {
       var payload = { _subject: subject };
+      // Lets you press Reply in your inbox to answer the visitor directly
+      if (fields['Email']) payload._replyto = fields['Email'];
       Object.keys(fields).forEach(function (k) { payload[k] = fields[k]; });
       return fetch(ep, {
         method: 'POST',
