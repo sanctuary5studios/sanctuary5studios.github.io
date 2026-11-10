@@ -465,6 +465,40 @@ var SFS_CONFIG = {
     });
   });
 
+  /* ---------- Snuggle Hollow: illustrated valley ---------- */
+  $$('.hollow-hero').forEach(function (hh) {
+    var btns = $$('[data-set-time]', hh);
+    function setT(t) {
+      hh.setAttribute('data-time', t);
+      btns.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-set-time') === t ? 'true' : 'false'); });
+    }
+    // The Hollow follows the visitor's own clock, without a fade on first load
+    var h = new Date().getHours();
+    hh.classList.add('instant');
+    setT(h >= 5 && h < 10 ? 'morning' : h >= 10 && h < 16 ? 'day' : h >= 16 && h < 19 ? 'golden' : 'night');
+    requestAnimationFrame(function () { requestAnimationFrame(function () { hh.classList.remove('instant'); }); });
+    btns.forEach(function (b) { b.addEventListener('click', function () { setT(b.getAttribute('data-set-time')); }); });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { hh.classList.toggle('paused', !es[0].isIntersecting); }).observe(hh);
+    }
+    if (!reduce && window.matchMedia && window.matchMedia('(pointer: fine)').matches) {
+      var layers = $$('[data-depth]', hh), queued = 0, px = 0, py = 0;
+      hh.addEventListener('pointermove', function (e) {
+        var r = hh.getBoundingClientRect();
+        px = (e.clientX - r.left) / r.width - 0.5; py = (e.clientY - r.top) / r.height - 0.5;
+        if (queued) return;
+        queued = requestAnimationFrame(function () {
+          queued = 0;
+          layers.forEach(function (l) {
+            var d = +l.getAttribute('data-depth');
+            l.style.transform = 'translate(' + (-px * 28 * d).toFixed(1) + 'px,' + (-py * 10 * d).toFixed(1) + 'px)';
+          });
+        });
+      });
+      hh.addEventListener('pointerleave', function () { layers.forEach(function (l) { l.style.transform = ''; }); });
+    }
+  });
+
   /* ---------- Copy-to-clipboard buttons ---------- */
   $$('[data-copy]').forEach(function (b) {
     b.addEventListener('click', function () {
