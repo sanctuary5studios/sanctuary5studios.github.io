@@ -6,7 +6,7 @@
    secret, so it is safe here. Leave it empty and forms fall back to opening
    the visitor's email app with the enquiry pre-filled.
    --------------------------------------------------------- */
-var SFS_CONFIG = {
+var SITE_CONFIG = {
   formEndpoint: '',
   email: 'hello@sanctuaryfivestudios.com'
 };
@@ -153,11 +153,11 @@ var SFS_CONFIG = {
   var term = $('#termBody');
   if (term) {
     var script = [
-      ['<span class="p">sfs@studio</span>:<span class="k">~</span>$ ', 'sfs start --client "you"'],
+      ['<span class="p">studio</span>:<span class="k">~</span>$ ', 'start --client "you"'],
       ['<span class="c"># listening to your goals…</span>', ''],
       ['<span class="ok">✔</span> ', 'discovery call booked'],
       ['<span class="ok">✔</span> ', 'roadmap drafted'],
-      ['<span class="p">sfs@studio</span>:<span class="k">~</span>$ ', 'sfs build --idea <span class="s">"yours"</span>'],
+      ['<span class="p">studio</span>:<span class="k">~</span>$ ', 'build --idea <span class="s">"yours"</span>'],
       ['<span class="c">  ▸ designing</span> ', '████████████ 100%'],
       ['<span class="c">  ▸ building</span>  ', '████████████ 100%'],
       ['<span class="c">  ▸ testing</span>   ', '████████████ 100%'],
@@ -266,7 +266,7 @@ var SFS_CONFIG = {
      Enquiry delivery (shared by every form)
      ========================================================= */
   function sendEnquiry(fields, subject) {
-    var ep = (SFS_CONFIG.formEndpoint || '').trim();
+    var ep = (SITE_CONFIG.formEndpoint || '').trim();
     if (ep) {
       var payload = { _subject: subject };
       Object.keys(fields).forEach(function (k) { payload[k] = fields[k]; });
@@ -280,12 +280,12 @@ var SFS_CONFIG = {
       });
     }
     var body = Object.keys(fields).map(function (k) { return k + ': ' + fields[k]; }).join('\n');
-    location.href = 'mailto:' + SFS_CONFIG.email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    location.href = 'mailto:' + SITE_CONFIG.email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
     return Promise.resolve({ mode: 'mailto' });
   }
   var ICON_OK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>';
   var ICON_BAD = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 7v6M12 16.5h.01"/></svg>';
-  var mailLink = function () { return '<a href="mailto:' + SFS_CONFIG.email + '">' + SFS_CONFIG.email + '</a>'; };
+  var mailLink = function () { return '<a href="mailto:' + SITE_CONFIG.email + '">' + SITE_CONFIG.email + '</a>'; };
   function esc(t) { return String(t).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
 
   /* Field validation: shows a message under each invalid field */
