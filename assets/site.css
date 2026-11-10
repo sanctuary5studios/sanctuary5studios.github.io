@@ -630,3 +630,9 @@ a:hover .go svg{transform:translateX(4px)}
 .rm-status.planned{color:var(--muted)}
 .rm-body .chip{padding:6px 12px;font-size:13px}
 .methods[hidden]{display:none}
+
+/* ---------- Snuggle Hollow ---------- */
+.project-snuggle-hollow{--accent:#86EFAC;--accent2:#F9A8D4;--glow:rgba(134,239,172,.14)}
+:root[data-theme="light"] .project-snuggle-hollow{--accent:#15803D;--accent2:#DB2777}
+/* Three projects sit side by side on wide screens */
+@media (min-width:1040px){.proj-grid.n3{grid-template-columns:repeat(3,1fr)}.proj-grid.n3 .proj h3{font-size:22px}.proj-grid.n3 .proj .body{padding:24px}}
