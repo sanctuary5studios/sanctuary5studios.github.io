@@ -29,7 +29,7 @@ var SITE_CONFIG = {
     b.addEventListener('click', function () {
       var next = isDark() ? 'light' : 'dark';
       doc.setAttribute('data-theme', next);
-      try { localStorage.setItem('s5-theme', next); } catch (e) {}
+      try { localStorage.setItem('sanctuary-five-studios-theme', next); } catch (e) {}
     });
   });
 
