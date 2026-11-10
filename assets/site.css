@@ -762,8 +762,6 @@ section.hollow-hero{padding:0}
 .founder-role{font-family:"JetBrains Mono",monospace;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:6px 0 18px}
 .founder-body > p:not(.founder-role){color:var(--muted);font-size:16.5px;max-width:720px}
 .founder-body > p + p{margin-top:12px}
-.founder-chips{margin-top:22px}
-.founder-chips .chip{font-size:13.5px;padding:8px 14px}
 .founder-quote{margin:26px 0 0;padding:4px 0 4px 20px;border-left:2px solid var(--accent)}
 .founder-quote p{font-family:"Space Grotesk",sans-serif;font-size:clamp(19px,2vw,23px);color:var(--ink);max-width:640px}
 .founder-quote cite{display:block;margin-top:8px;font-style:normal;font-size:14px;color:var(--muted)}
