@@ -107,7 +107,7 @@ img{max-width:100%}
   .navlinks,.nav .btn.sm{display:none}
   .menu-btn{display:inline-grid}
 }
-@media (max-width:400px){.site-brand small{display:none}.site-brand{font-size:15.5px}}
+@media (max-width:400px){.site-brand{font-size:15.5px}}
 
 /* Mobile menu */
 .mnav-scrim{position:fixed;inset:0;z-index:60;background:rgba(4,7,15,.5);opacity:0;pointer-events:none;transition:opacity .2s}
@@ -561,7 +561,7 @@ a:hover .go svg{transform:translateX(4px)}
 .updates span{color:var(--muted);font-size:14.5px}
 .updates small{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
 
-/* SFS Interactive division: same system, its own mood */
+/* Games division: same system, its own mood */
 .division-interactive{--accent:var(--pink);--accent2:var(--violet);--glow:rgba(244,114,182,.14);--radius:26px}
 .division-interactive .phero{background:radial-gradient(800px 400px at 70% 0%,color-mix(in srgb,var(--pink) 16%,transparent),transparent 65%),radial-gradient(700px 420px at 10% 30%,color-mix(in srgb,var(--violet) 16%,transparent),transparent 65%)}
 .division-interactive .bg-orbs i:nth-child(1){background:var(--pink)}
@@ -752,3 +752,4 @@ a:hover .go svg{transform:translateX(4px)}
 .hollow-intro h2{font-size:clamp(28px,4vw,42px)}
 section.hollow-hero{padding:0}
 @media (max-width:640px){.js .hollow-note{display:none}}
+.division-mark{display:flex;width:max-content}
