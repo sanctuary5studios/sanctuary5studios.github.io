@@ -501,7 +501,7 @@ var SITE_CONFIG = {
     }
     function buildSummary() {
       var d = collect().fields;
-      $('.summary', w).innerHTML = Object.keys(d).filter(function (k) { return ['Screening', 'Privacy notice accepted', 'Understands gift is for taking part'].indexOf(k) === -1; })
+      $('.summary', w).innerHTML = Object.keys(d).filter(function (k) { return ['Screening', 'Privacy notice accepted', 'Understands reward terms'].indexOf(k) === -1; })
         .map(function (k) { return '<div><dt>' + esc(k) + '</dt><dd>' + esc(d[k]) + '</dd></div>'; }).join('');
     }
     $$('[data-next]', w).forEach(function (b) { b.addEventListener('click', function () { if (stepValid(steps[cur])) show(cur + 1, true); }); });
