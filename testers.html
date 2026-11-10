@@ -27,8 +27,8 @@
 <script>
 (function(){
   try{
-    var saved = localStorage.getItem('s5-theme');
-    var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    var saved = localStorage.getItem('sanctuary-five-studios-theme');
+    var theme = saved || 'dark';
     if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
   }catch(e){}
 })();
@@ -372,10 +372,10 @@
     var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     if (isDark){
       document.documentElement.removeAttribute('data-theme');
-      try{ localStorage.setItem('s5-theme', 'light'); }catch(e){}
+      try{ localStorage.setItem('sanctuary-five-studios-theme', 'light'); }catch(e){}
     } else {
       document.documentElement.setAttribute('data-theme', 'dark');
-      try{ localStorage.setItem('s5-theme', 'dark'); }catch(e){}
+      try{ localStorage.setItem('sanctuary-five-studios-theme', 'dark'); }catch(e){}
     }
     setIcon();
   });
