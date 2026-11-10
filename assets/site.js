@@ -270,7 +270,8 @@ var SITE_CONFIG = {
     if (ep) {
       var payload = { _subject: subject };
       // Lets you press Reply in your inbox to answer the visitor directly
-      if (fields['Email']) payload._replyto = fields['Email'];
+      var replyTo = fields['Email'] || fields['Google Play email'];
+      if (replyTo) payload._replyto = replyTo;
       Object.keys(fields).forEach(function (k) { payload[k] = fields[k]; });
       return fetch(ep, {
         method: 'POST',
@@ -449,6 +450,88 @@ var SITE_CONFIG = {
       var em = $('input[name="method"][value="Email"]', w); if (em) em.checked = true;
       wireMethod(w);
       done.hidden = true; $('.wiz-top', w).hidden = false; $('.wiz-bar', w).hidden = false; show(0, true);
+    });
+    show(0, false);
+  });
+
+  /* ---------- Tester application (screening form) ---------- */
+  $$('[data-widget="apply"]').forEach(function (w) {
+    var steps = $$('.wiz-step', w), cur = 0, bar = $('.wiz-bar i', w), count = $('.wiz-count', w);
+    var top = $('.wiz-top', w), barWrap = $('.wiz-bar', w), stopPanel = $('.wiz-stop', w), done = $('.wiz-done', w);
+    var status = $('.status', w), submit = $('[data-submit]', w);
+    var picked = function (fs) { return $$('input:checked', fs).map(function (i) { return i.value; }); };
+    function show(i, focus) {
+      cur = i;
+      steps.forEach(function (s, k) { s.hidden = k !== i; });
+      if (bar) bar.style.width = ((i + 1) / steps.length * 100) + '%';
+      if (count) count.textContent = 'Step ' + (i + 1) + ' of ' + steps.length;
+      if (steps[i].getAttribute('data-step') === 'review') buildSummary();
+      if (focus) { var h = $('h3', steps[i]); if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); } w.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); }
+    }
+    function panel(p, title, html) {
+      steps.forEach(function (s) { s.hidden = true; });
+      top.hidden = true; barWrap.hidden = true;
+      if (title) $('h3', p).textContent = title;
+      $('p', p).innerHTML = html;
+      p.hidden = false; var h = $('h3', p); h.setAttribute('tabindex', '-1'); h.focus();
+    }
+    function stepValid(step) {
+      var err = $('.step-err', step); if (err) err.textContent = '';
+      var stopFs = $$('fieldset.q[data-stop]', step).filter(function (fs) { return picked(fs).indexOf(fs.getAttribute('data-stop')) > -1; })[0];
+      if (stopFs) { panel(stopPanel, '', esc(stopFs.getAttribute('data-stop-msg'))); return false; }
+      var ok = validate(step);
+      var missing = $$('fieldset.q[data-required]', step).some(function (fs) { return !picked(fs).length; });
+      if (missing && err) err.textContent = 'Please answer each question to continue.';
+      return ok && !missing;
+    }
+    function collect() {
+      var flags = [], out = {};
+      $$('fieldset.q[data-flag]', w).forEach(function (fs) {
+        if (picked(fs).indexOf(fs.getAttribute('data-flag')) > -1) flags.push(fs.getAttribute('data-flag-text'));
+      });
+      out['Screening'] = flags.length ? 'Needs review: ' + flags.join(', ') : 'Meets requirements';
+      $$('[data-label]', w).forEach(function (el) {
+        var v;
+        if (el.tagName === 'FIELDSET') v = picked(el).join(', ');
+        else if (el.type === 'checkbox') v = el.checked ? 'Yes' : 'No';
+        else v = el.value.trim();
+        if (v) out[el.getAttribute('data-label')] = v;
+      });
+      return { fields: out, flagged: flags.length > 0 };
+    }
+    function buildSummary() {
+      var d = collect().fields;
+      $('.summary', w).innerHTML = Object.keys(d).filter(function (k) { return ['Screening', 'Privacy notice accepted', 'Understands gift is for taking part'].indexOf(k) === -1; })
+        .map(function (k) { return '<div><dt>' + esc(k) + '</dt><dd>' + esc(d[k]) + '</dd></div>'; }).join('');
+    }
+    $$('[data-next]', w).forEach(function (b) { b.addEventListener('click', function () { if (stepValid(steps[cur])) show(cur + 1, true); }); });
+    $$('[data-back]', w).forEach(function (b) { b.addEventListener('click', function () { show(cur - 1, true); }); });
+    $$('input[type="radio"]', w).forEach(function (r) { r.addEventListener('change', function () { var e = $('.step-err', steps[cur]); if (e) e.textContent = ''; }); });
+    submit.addEventListener('click', function () {
+      if ($('.hp input', w) && $('.hp input', w).value) return;
+      var c = collect(), d = c.fields, html = submit.innerHTML;
+      var subject = (w.getAttribute('data-subject') || 'Tester application') + ': ' + (d['Name'] || '') + ' — ' + (c.flagged ? 'Needs review' : 'Meets requirements');
+      submit.disabled = true; submit.textContent = 'Sending…'; status.hidden = true;
+      sendEnquiry(d, subject).then(function (r) {
+        var name = esc(d['Name'] || ''), mail = esc(d['Google Play email'] || '');
+        if (r.mode === 'sent') {
+          panel(done, 'Thank you' + (name ? ', ' + name : '') + '! Your application is in.',
+            'We review every application and will email you at <b>' + mail + '</b> if you\'re selected for the test. In the meantime, come and say hi in our Discord.');
+        } else {
+          panel(done, 'One last step: press send.', 'Your email app should have opened with your application filled in. Press send to deliver it to us. If nothing opened, email us at ' + mailLink() + '.');
+        }
+      }).catch(function () {
+        status.className = 'status bad';
+        status.innerHTML = ICON_BAD + '<div><b>Sorry, your application couldn\'t be sent.</b> Please try again in a moment, or email us at ' + mailLink() + '.</div>';
+        status.hidden = false;
+      }).then(function () { submit.disabled = false; submit.innerHTML = html; });
+    });
+    $$('[data-restart]', w).forEach(function (b) {
+      b.addEventListener('click', function () {
+        $$('input', w).forEach(function (i) { if (i.type === 'radio' || i.type === 'checkbox') i.checked = false; else i.value = ''; });
+        $$('textarea, select', w).forEach(function (t) { t.value = ''; });
+        stopPanel.hidden = true; done.hidden = true; top.hidden = false; barWrap.hidden = false; show(0, true);
+      });
     });
     show(0, false);
   });

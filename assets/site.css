@@ -766,3 +766,11 @@ section.hollow-hero{padding:0}
 .founder-quote p{font-family:"Space Grotesk",sans-serif;font-size:clamp(19px,2vw,23px);color:var(--ink);max-width:640px}
 .founder-quote cite{display:block;margin-top:8px;font-style:normal;font-size:14px;color:var(--muted)}
 @media (max-width:720px){.founder{grid-template-columns:1fr;gap:24px;padding:26px}.founder-badge{width:96px;height:96px}.founder-badge span{font-size:32px}}
+
+/* ---------- Tester page: thank-you reward ---------- */
+.reward{background:linear-gradient(150deg,color-mix(in srgb,var(--accent) 14%,var(--glass)),color-mix(in srgb,var(--accent2) 10%,var(--glass)))}
+.reward-items{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
+.reward-items div{border-radius:16px;padding:18px;background:var(--surface);border:1px solid var(--glassLine);text-align:center}
+.reward-items b{display:block;font-family:"Space Grotesk",sans-serif;font-size:34px;line-height:1.1;color:var(--ink)}
+.reward-items b svg{width:34px;height:34px;color:var(--accent)}
+.reward-items span{display:block;margin-top:6px;font-size:14.5px;color:var(--muted)}
