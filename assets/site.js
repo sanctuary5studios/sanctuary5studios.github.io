@@ -490,6 +490,8 @@ var SITE_CONFIG = {
         if (picked(fs).indexOf(fs.getAttribute('data-flag')) > -1) flags.push(fs.getAttribute('data-flag-text'));
       });
       out['Screening'] = flags.length ? 'Needs review: ' + flags.join(', ') : 'Meets requirements';
+      var from = (new URLSearchParams(location.search).get('from') || '').replace(/[^\w .-]/g, '').slice(0, 60);
+      out['Applied from'] = (w.getAttribute('data-source') || 'Website tester page') + (from ? ' (link: ' + from + ')' : '');
       $$('[data-label]', w).forEach(function (el) {
         var v;
         if (el.tagName === 'FIELDSET') v = picked(el).join(', ');

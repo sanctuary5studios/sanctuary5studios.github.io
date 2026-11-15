@@ -16,6 +16,7 @@ Plain static HTML on GitHub Pages: no build step, no dependencies.
 - `contact.html` Contact form
 - `privacy-notice.html` Website privacy notice
 - `testers.html` Snuggle Sanctuary tester page with a screening application form (sent through Formspree)
+- `test/` Standalone tester landing page for social media (sanctuaryfivestudios.com/test). Add `?from=name` to a shared link and applications record it under "Applied from"
 - `privacy.html`, `account-deletion.html` Snuggle Sanctuary policy pages
 - `404.html`, `sitemap.xml`, `robots.txt`
 

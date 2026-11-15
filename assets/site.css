@@ -774,3 +774,18 @@ section.hollow-hero{padding:0}
 .reward-items b{display:block;font-family:"Space Grotesk",sans-serif;font-size:34px;line-height:1.1;color:var(--ink)}
 .reward-items b svg{width:34px;height:34px;color:var(--accent)}
 .reward-items span{display:block;margin-top:6px;font-size:14.5px;color:var(--muted)}
+
+/* ---------- Standalone tester landing page (/test/) ---------- */
+.lp .nav .btn.sm.lp-apply{display:inline-flex;margin-left:auto}
+.lp .site-brand{margin-right:0}
+.lp-reward{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border-radius:16px;margin:-8px 0 28px;max-width:600px;
+  background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 16%,transparent),color-mix(in srgb,var(--accent2) 12%,transparent));
+  border:1px solid color-mix(in srgb,var(--accent) 35%,transparent)}
+.lp-reward svg{width:26px;height:26px;flex:none;color:var(--accent);margin-top:2px}
+.lp-reward p{font-size:16px;color:var(--ink)}
+.lp-footer{border-top:1px solid var(--line);padding:36px 0 48px;margin-top:20px;text-align:center;font-size:14.5px}
+.lp-footer p + p{margin-top:10px}
+.lp-footer a{color:var(--ink)}
+.lp-links{display:flex;justify-content:center;gap:8px 22px;flex-wrap:wrap}
+.lp-links a{color:var(--muted);text-decoration:none}
+.lp-links a:hover{color:var(--ink)}
