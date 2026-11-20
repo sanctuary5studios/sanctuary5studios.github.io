@@ -18,6 +18,7 @@ Plain static HTML on GitHub Pages: no build step, no dependencies.
 - `testers.html` Snuggle Sanctuary tester page with a screening application form (sent through Formspree)
 - `test/` Standalone tester landing page for social media (sanctuaryfivestudios.com/test). Add `?from=name` to a shared link and applications record it under "Applied from"
 - `privacy.html`, `account-deletion.html` Snuggle Sanctuary policy pages
+- `karaoke/` Sanctuary Five Studios Karaoke product page, with `privacy/`, `licence/`, `open-source/` and `how-we-built-it/`. The installer is hosted on GitHub Releases (tag `karaoke-v1.1.0`), not in this repository. The SmartScreen note on the product page is marked with an HTML comment for easy removal once the installer is code-signed
 - `404.html`, `sitemap.xml`, `robots.txt`
 
 ## Shared code

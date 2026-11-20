@@ -538,6 +538,40 @@ var SITE_CONFIG = {
     show(0, false);
   });
 
+  /* ---------- Screenshot lightbox ---------- */
+  $$('[data-lightbox]').forEach(function (gal) {
+    var thumbs = $$('.k-thumb', gal), idx = 0, opener = null;
+    if (!thumbs.length || typeof HTMLDialogElement === 'undefined') return;
+    var dlg = document.createElement('dialog');
+    dlg.className = 'lightbox';
+    dlg.setAttribute('aria-label', 'Screenshot viewer');
+    dlg.innerHTML = '<figure><img alt=""><figcaption></figcaption></figure>' +
+      '<button type="button" class="lb-btn lb-close" aria-label="Close">&times;</button>' +
+      (thumbs.length > 1 ? '<button type="button" class="lb-btn lb-prev" aria-label="Previous screenshot">&#8249;</button><button type="button" class="lb-btn lb-next" aria-label="Next screenshot">&#8250;</button>' : '');
+    document.body.appendChild(dlg);
+    var img = $('img', dlg), cap = $('figcaption', dlg);
+    function show(i) {
+      idx = (i + thumbs.length) % thumbs.length;
+      var t = thumbs[idx], ti = $('img', t);
+      img.src = t.getAttribute('data-full'); img.alt = ti ? ti.alt : '';
+      cap.textContent = t.getAttribute('data-caption') + (thumbs.length > 1 ? '  (' + (idx + 1) + ' of ' + thumbs.length + ')' : '');
+    }
+    thumbs.forEach(function (t, i) {
+      t.addEventListener('click', function () { opener = t; show(i); dlg.showModal(); $('.lb-close', dlg).focus(); });
+    });
+    $('.lb-close', dlg).addEventListener('click', function () { dlg.close(); });
+    if (thumbs.length > 1) {
+      $('.lb-prev', dlg).addEventListener('click', function () { show(idx - 1); });
+      $('.lb-next', dlg).addEventListener('click', function () { show(idx + 1); });
+    }
+    dlg.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); show(idx + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); show(idx - 1); }
+    });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+    dlg.addEventListener('close', function () { if (opener) opener.focus(); });
+  });
+
   /* ---------- Project filters (Innovation Lab) ---------- */
   $$('.filters').forEach(function (bar) {
     var btns = $$('button', bar), grid = document.getElementById(bar.getAttribute('aria-controls'));
