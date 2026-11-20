@@ -860,3 +860,11 @@ dialog.lightbox figcaption{text-align:center;margin-top:12px;font-size:15px}
 .lb-prev{left:-22px;top:calc(50% - 40px)}
 .lb-next{right:-22px;top:calc(50% - 40px)}
 @media (max-width:700px){.lb-prev{left:6px}.lb-next{right:6px}.lb-close{top:6px;right:6px}}
+
+/* ---------- Software overview (/apps/) ---------- */
+.app-list{display:grid;gap:22px}
+.app-card{display:grid;grid-template-columns:auto 1fr;gap:28px;padding:36px;align-items:start}
+.app-card-icon{width:96px;height:96px;border-radius:24px;box-shadow:0 14px 34px -14px rgba(79,214,207,.55)}
+.app-card h2{font-size:clamp(24px,3vw,32px);margin-bottom:8px}
+.app-card p{color:var(--muted);max-width:680px}
+@media (max-width:640px){.app-card{grid-template-columns:1fr;padding:26px;gap:18px}.app-card-icon{width:72px;height:72px;border-radius:18px}}

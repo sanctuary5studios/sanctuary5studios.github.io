@@ -46,7 +46,10 @@
       </div>
       <a href="/games.html">Games</a>
       <a href="/lab.html">Innovation Lab</a>
-      <a href="/karaoke/" aria-current="page">Karaoke</a>
+      <div class="dd on" data-open="false">
+        <button type="button" aria-expanded="false" aria-haspopup="true">Software <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="dd-panel" style="grid-template-columns:1fr;width:380px"><a href="/karaoke/" style="--accent:var(--cyan)" aria-current="page"><span class="num">App</span><span><b>Sanctuary Five Studios Karaoke</b><span>Karaoke hosting for Windows</span></span></a><a href="/apps/" style="--accent:var(--violet)"><span class="num">All</span><span><b>All our software</b><span>Every app we design, build and release</span></span></a></div>
+      </div>
       <a href="/about.html">About</a>
       <a href="/partnerships.html">Partnerships</a>
     </nav>
@@ -64,7 +67,9 @@
   <div class="mnav-label">Our work</div>
   <a href="/games.html">Games</a>
   <a href="/lab.html">Innovation Lab</a>
-  <a href="/karaoke/" aria-current="page">Karaoke (Windows app)</a>
+  <div class="mnav-label">Software</div>
+  <a href="/karaoke/" aria-current="page">Sanctuary Five Studios Karaoke</a>
+  <a href="/apps/">All our software</a>
   <div class="mnav-label">Company</div>
   <a href="/about.html">About us</a>
   <a href="/partnerships.html">Partnerships &amp; Investment</a>
@@ -76,7 +81,7 @@
 <section class="phero k-hero">
   <div class="bg-orbs" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap">
-    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / Karaoke</nav>
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/apps/">Software</a> / Karaoke</nav>
     <div class="split" style="align-items:center">
       <div>
         <div class="k-title-row"><img class="k-icon" src="/img/karaoke/app-icon-256.webp" width="88" height="88" alt="Sanctuary Five Studios Karaoke app icon: a microphone inside a glowing pentagon"><span class="eyebrow" style="margin:0">Desktop app · Windows</span></div>
@@ -88,7 +93,7 @@
         </div>
         <ul class="checks k-ticks"><li>Windows 10 and 11, 64-bit</li><li>Works offline</li><li>Version 1.1.0</li></ul>
       </div>
-      <figure class="keyart k-splash"><img src="/img/karaoke/splash-hero.webp" srcset="/img/karaoke/splash-hero-960.webp 960w, /img/karaoke/splash-hero.webp 1920w" sizes="(max-width:900px) 100vw, 560px" width="1920" height="1080" fetchpriority="high" alt="Sanctuary Five Studios Karaoke splash screen: the circular Sanctuary Five Studios emblem above the studio name on a dark navy background"></figure>
+      <figure class="keyart k-splash"><img src="/img/karaoke/splash-hero.webp" srcset="/img/karaoke/splash-hero-960.webp 960w, /img/karaoke/splash-hero.webp 1920w" sizes="(max-width:900px) 100vw, 560px" width="1920" height="1080" fetchpriority="high" alt="Sanctuary Five Studios Karaoke splash screen: the circular Sanctuary Five Studios emblem above the studio name and the word KARAOKE on a dark navy background"></figure>
     </div>
   </div>
 </section>
@@ -194,21 +199,7 @@
         <img src="/img/karaoke/app-icon-128.webp" width="64" height="64" alt="">
         <div><h3>Sanctuary Five Studios Karaoke 1.1.0</h3><p class="muted">For Windows 10 and 11 (64-bit) · 118 MB</p></div>
       </div>
-      <a class="btn brand lg k-dl-btn" href="https://github.com/sanctuary5studios/sanctuary5studios.github.io/releases/download/karaoke-v1.1.0/Sanctuary.Five.Studios.Karaoke.Setup.1.1.0.exe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg> Download for Windows</a>
-      <dl class="k-dl-facts">
-        <div><dt>Version</dt><dd>1.1.0</dd></div>
-        <div><dt>File size</dt><dd>118 MB (123,239,788 bytes)</dd></div>
-        <div><dt>SHA-256</dt><dd><code class="k-hash">1d16996001997f077f7a51cd3bd5b1d6af55a5800c026b02c6cd8496c38e881b</code> <button type="button" class="btn ghost sm k-copy" data-copy="1d16996001997f077f7a51cd3bd5b1d6af55a5800c026b02c6cd8496c38e881b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy</button></dd></div>
-      </dl>
-      <!-- SMARTSCREEN NOTE: delete this block once the installer is code-signed -->
-      <div class="k-note" id="smartscreen-note">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-        <p><b>Seeing “Windows protected your PC”?</b> Click <b>More info → Run anyway</b>. This appears because our installer is new to Microsoft SmartScreen.</p>
-      </div>
-      <!-- /SMARTSCREEN NOTE -->
-      <details class="faq k-verify"><summary>Installing and checking the download</summary>
-        <p>The installer is a standard setup wizard: choose a folder, and it adds Desktop and Start-menu shortcuts and an uninstaller under <b>Settings → Apps</b>. To confirm the file downloaded correctly, open PowerShell in your Downloads folder, run <code>Get-FileHash .\Sanctuary.Five.Studios.Karaoke.Setup.1.1.0.exe</code>, and check the result matches the SHA-256 above.</p>
-      </details>
+      <a class="btn brand lg k-dl-btn" href="https://github.com/sanctuary5studios/sanctuary5studios.github.io/releases/download/karaoke-v1.1.0/Sanctuary.Five.Studios.Karaoke.Setup.1.1.0.exe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg> Download now</a>
     </div>
   </div>
 </section>
@@ -229,7 +220,7 @@
 <section style="padding-top:0">
   <div class="wrap narrow">
     <div class="sec-head reveal"><div class="eyebrow">Questions</div><h2>Good to know.</h2></div>
-    <div class="reveal"><details class="faq"><summary>Does it need an internet connection?</summary><p>No. It works fully offline, with no account, no subscription, no ads and no telemetry. The app actively blocks internet access, and nothing leaves your PC.</p></details><details class="faq"><summary>What happens when the demo ends?</summary><p>After 10 minutes, playback fades and a purchase screen appears. You can restart the demo for another 10 minutes. The demo allows up to 3 singers, doesn't record, and shows an “UNLICENSED DEMO” watermark on the audience screen.</p></details><details class="faq"><summary>How much is the full version?</summary><p>NZ$79, as a one-off payment with no subscription. Purchasing opens soon; until then, the free demo lets you try everything.</p></details><details class="faq"><summary>How do I unlock the full version?</summary><p>After you buy, we email you a purchase key. In the app, open ☰ → “Enter purchase key…” (or use the demo screen) and enter your name or email exactly as on your purchase, plus the key. Keys are checked offline.</p></details><details class="faq"><summary>Does it come with songs?</summary><p>No. The app doesn't include any songs or lyrics. You use your own media, and you're responsible for any performance licences needed at public events.</p></details><details class="faq"><summary>Which file types does it play?</summary><p>Karaoke: MP3+G, WAV+G, ZIP MP3+G, karaoke videos, LRC synced lyrics and lyrics embedded in MP3 tags. Audio and video: MP3, WAV, FLAC, AAC/M4A, OGG, AIFF, WMA, MP4, MKV, WEBM, MOV, AVI, MPEG, WMV and FLV. Files Windows can't play directly are converted automatically, and your originals are never modified.</p></details><details class="faq"><summary>Can it remove vocals?</summary><p>Multiplex karaoke tracks have a selectable vocal channel and a guide-vocal level. For other recordings, vocal reduction is basic, and how well it works depends on the recording.</p></details><details class="faq"><summary>Does it support ASIO?</summary><p>No. It uses standard Windows audio (WASAPI).</p></details><details class="faq"><summary>Is there a Mac version?</summary><p>Not at the moment. The app runs on Windows 10 and Windows 11 (64-bit).</p></details><details class="faq"><summary>Why does Windows show a warning when I install it?</summary><p>Our installer is new to Microsoft SmartScreen, so Windows may show “Windows protected your PC”. Click More info → Run anyway. You can also check the download against the SHA-256 checksum above.</p></details></div>
+    <div class="reveal"><details class="faq"><summary>Does it need an internet connection?</summary><p>No. It works fully offline, with no account, no subscription, no ads and no telemetry. The app actively blocks internet access, and nothing leaves your PC.</p></details><details class="faq"><summary>What happens when the demo ends?</summary><p>After 10 minutes, playback fades and a purchase screen appears. You can restart the demo for another 10 minutes. The demo allows up to 3 singers, doesn't record, and shows an “UNLICENSED DEMO” watermark on the audience screen.</p></details><details class="faq"><summary>How much is the full version?</summary><p>NZ$79, as a one-off payment with no subscription. Purchasing opens soon; until then, the free demo lets you try everything.</p></details><details class="faq"><summary>How do I unlock the full version?</summary><p>After you buy, we email you a purchase key. In the app, open ☰ → “Enter purchase key…” (or use the demo screen) and enter your name or email exactly as on your purchase, plus the key. Keys are checked offline.</p></details><details class="faq"><summary>Does it come with songs?</summary><p>No. The app doesn't include any songs or lyrics. You use your own media, and you're responsible for any performance licences needed at public events.</p></details><details class="faq"><summary>Which file types does it play?</summary><p>Karaoke: MP3+G, WAV+G, ZIP MP3+G, karaoke videos, LRC synced lyrics and lyrics embedded in MP3 tags. Audio and video: MP3, WAV, FLAC, AAC/M4A, OGG, AIFF, WMA, MP4, MKV, WEBM, MOV, AVI, MPEG, WMV and FLV. Files Windows can't play directly are converted automatically, and your originals are never modified.</p></details><details class="faq"><summary>Can it remove vocals?</summary><p>Multiplex karaoke tracks have a selectable vocal channel and a guide-vocal level. For other recordings, vocal reduction is basic, and how well it works depends on the recording.</p></details><details class="faq"><summary>Does it support ASIO?</summary><p>No. It uses standard Windows audio (WASAPI).</p></details><details class="faq"><summary>Is there a Mac version?</summary><p>Not at the moment. The app runs on Windows 10 and Windows 11 (64-bit).</p></details><details class="faq"><summary>Why does Windows show a warning when I install it?</summary><p>Our installer is new to Microsoft SmartScreen, so Windows may show “Windows protected your PC”. Click More info → Run anyway.</p></details></div>
     <p class="k-legal-links"><a href="/karaoke/privacy/">Privacy policy</a><a href="/karaoke/licence/">Licence agreement</a><a href="/karaoke/open-source/">Open-source licences</a><a href="/karaoke/how-we-built-it/">How we built it</a></p>
   </div>
 </section>
@@ -243,7 +234,7 @@
         <p><a href="mailto:hello@sanctuaryfivestudios.com">hello@sanctuaryfivestudios.com</a></p>
       </div>
       <div class="fcol"><h4>Services</h4><a href="/software.html">Software &amp; App Development</a><a href="/ai.html">AI Solutions &amp; Enablement</a><a href="/systems.html">Business Systems &amp; Automation</a></div>
-      <div class="fcol"><h4>Our work</h4><a href="/games.html">Games</a><a href="/snuggle-sanctuary.html">Snuggle Sanctuary</a><a href="/world-travel-adventures.html">World Travel Adventures</a><a href="/snuggle-hollow.html">Snuggle Hollow</a><a href="/karaoke/">Karaoke for Windows</a><a href="/lab.html">Innovation Lab</a><a href="/testers.html">Become a tester</a></div>
+      <div class="fcol"><h4>Our work</h4><a href="/games.html">Games</a><a href="/snuggle-sanctuary.html">Snuggle Sanctuary</a><a href="/world-travel-adventures.html">World Travel Adventures</a><a href="/snuggle-hollow.html">Snuggle Hollow</a><a href="/apps/">Our software</a><a href="/karaoke/">Karaoke for Windows</a><a href="/lab.html">Innovation Lab</a><a href="/testers.html">Become a tester</a></div>
       <div class="fcol"><h4>Company</h4><a href="/about.html">About us</a><a href="/about.html#approach">How we work</a><a href="/partnerships.html">Partnerships &amp; Investment</a><a href="/contact.html">Contact</a></div>
       <div class="fcol"><h4>Legal</h4><a href="/privacy-notice.html">Website privacy notice</a><a href="/privacy.html">Snuggle Sanctuary privacy</a><a href="/account-deletion.html">Account deletion</a><a href="/karaoke/privacy/">Karaoke privacy policy</a><a href="/karaoke/licence/">Karaoke licence agreement</a><a href="/karaoke/open-source/">Karaoke open-source licences</a></div>
     </div>
